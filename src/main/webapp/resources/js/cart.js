@@ -92,7 +92,7 @@ function modifyDisplayData(id, qty) {
                 * qty;
         checkedNum = parseInt(checkedNum) + qty;
 
-        cartPriceEl.html(cartPrice);
+        cartPriceEl.html(cartPrice.toFixed(2));
         cartPointEl.html(cartPoint);
         checkedNumEl.html(checkedNum);
     }
