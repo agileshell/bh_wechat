@@ -1,0 +1,152 @@
+.new-addr {
+	padding: 20px 12px;
+}
+
+.new-addr .new-txt2 {
+	display: block;
+	font-size: 14px;
+	color: #333;
+}
+
+.new-addr .new-tit {
+	font-size: 18px;
+	color: #6e6e6e;
+}
+
+.new-addr .new-tbl-cell {
+	background: none;
+}
+
+.new-ship-addr .new-tbl-cell {
+	font-size: 14px;
+	color: #6e6e6e;
+}
+
+.new-addr .new-tbl-cell {
+	vertical-align: top;
+}
+
+.new-txt-w38 {
+	width: 38px;
+	height: 32px;
+	line-height: 32px;
+	text-align: left;
+}
+
+.new-sel-box {
+	display: inline-block;
+	width: 90px;
+	height: 20px;
+	margin-left: 5px;
+	border: 1px solid #707070;
+	background-color: #fff;
+}
+
+.new-select {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	height: 30px;
+	opacity: 0;
+}
+
+.new-addr .new-sel-box {
+	width: 100%;
+	height: 30px;
+	margin-left: 0;
+	border: 0;
+	line-height: 30px;
+	font-size: 12px;
+	text-indent: 10px;
+}
+
+.new-post_wr {
+	display: block;
+	padding: 4px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px 5px;
+	-webkit-appearance: textarea;
+}
+
+.new-textarea {
+	width: 95%;
+	height: 100px;
+	margin-left: .3em;
+	border: 0;
+	font-size: .9em;
+	color: #6e6e6e;
+	-webkit-appearance: none;
+}
+
+.address-ul {
+	margin: 0;
+	border-top: none;
+}
+
+.address-li {
+	margin-bottom: 10px;
+	border: 1px solid #999;
+}
+
+.new-addr p {
+	margin: 0;
+}
+
+.new-addr .address-li .new-tit {
+	padding: 7px 12px;
+	border-bottom: 1px solid #999;
+	font-size: 14px;
+}
+
+.new-txt {
+	font-size: 14px;
+	color: #6e6e6e;
+}
+
+.new-txt-rd2 {
+	padding-left: 20px;
+	color: #a40000;
+}
+
+.new-option-r {
+	position: absolute;
+	top: 7px;
+	right: 12px;
+}
+
+.new-mu_l2a {
+	display: block;
+	overflow: hidden;
+	clear: both;
+	padding: 0 12px 8px;
+}
+
+.new-mu_l2cw {
+	display: block;
+	overflow: hidden;
+	padding-top: 10px;
+	font-size: 14px;
+	color: #6e6e6e;
+}
+
+.new-addr-btn {
+	font-size: 14px;
+	color: #282828;
+	text-align: right;
+}
+
+.new-addr-bar {
+	padding: 0 15px;
+	vertical-align: top;
+}
+
+.sitem-tip {
+	padding: .2em .6em;
+	background: #f15353;
+	color: #fff;
+	border-radius: 3px;
+	font: inherit;
+	font-size: .875em;
+}

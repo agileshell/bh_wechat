@@ -1,0 +1,108 @@
+.main {
+    padding: 20px 15px 0;
+}
+.main .item,
+.main .item-captcha .input-info {
+    margin-bottom: 10px;
+}
+.main .item {
+    position: relative;
+    width: 100%;
+}
+.main .item .err-msg {
+    font-size: 13px;
+    color: #f25454;
+}
+.main .item:after {
+    display: block;
+}
+.main .item-option:after,
+.main .item:after {
+    content: '\20';
+    clear: both;
+}
+.main .item .txt-input {
+    width: 100%;
+    height: 44px;
+    line-height: normal;
+    padding: 0;
+    border: 1px solid #d7d7d7;
+    border-radius: 3px;
+    background: #fff;
+    font-family: '\5fae\8f6f\96c5\9ed1';
+    font-size: 16px;
+    color: #252525;
+    -webkit-appearance: none;
+}
+.main .item .txt-captcha,
+.main .item .txt-password,
+.main .item .txt-username,
+.main .item .txt-mobile {
+    padding-left: 15px;
+}
+.main .item-password .tp-btn {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    width: 51px;
+    height: 35px
+}
+.main .item-password .btn-off {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABFCAMAAACPOWPIAAAATlBMVEX////m5ub6+vr29vb8/Py3t7fX19fw8PC8vLzz8/Pi4uLe3t7p6enr6+va2trLy8vCwsL+/v7Pz8/k5OTt7e2srKzT09PIyMjo6OiysrK375fxAAADxElEQVRYw9XZ25LiIBAGYKARwjkBTOL7v+h2O3Fndh0jMHuz/02qLONX3bQxQfYiEnTgxX6klMLfxgdtYGEdEZpb52JU98ToHFG8JcHINmMxu3VRrTmntGFSynlVsUOCFoSTkbbVBiMkdk+Yiq711YCQy+sTpQATjv7BGwQIySnWv0qXujh+QKeBDykI9jqyWkLKt+8R3pVq3jkk7QTpl+8T3CHCX66h9G7XIN5PE5DjXxQE1qmkTtsqrK3YuPejSq3b4XslrsmzNwnO02S0FQTfKjlBw/lub3LETs53SgbWENHqeHTEX6+Rgq81O8uII7lbqZZWx+O8tfXNf3nfUp1KzQqtTwXZ4tD35+vCqORZR4LVLcvD4GvbFh6zYl2xvGl5WOA8sCMGWyb6GEFtY21tg6OYEjNnnfEFy2lrm/8sRvYysrEctj/K4VRMdzw3TY2GY3WEVdtxQufqNHWNHcOm3RrZQKxv65rm3JAWUx1htG3rmrh3TVoagIHIjq5JBm5VbCg2QBMTaNa0y3aM2fe2xTG0OCFmP8bUYmTjSGuaADPGGKvbZ6CoBGOMcB+MVNOk5PPxEUnXG6s2OcbIg1EXTHw+PrJwzolhgzmY6YKZno6f+Rkjm5jPasTw2nw2TT0dv67N/oMRANsxAjymMMbUnoEOMbsxxvZ8PbXL6xijei424NZ5jEk9l05p1VUMDdrc80PAeLzZEaZsPT9ruDjTUNdSBtnYM0OanUe6BlPsuuVge76pfibOpesGipn10l+OmFLoux1c3HxV/cUo03dzy3S6XKF3ZTYr+m7V6Vp36xy2NK9edj54sIrluB7FTsmZ3scoBnG+XXW7oqdNeeh+KJQ6T7cbNC/MPGerZdMjblj+KG67oNOspOhh5IFd2/lyu5hWRXEtexUK1DhhPbphXVBZbYWhzRRpAjnXyN7ETaR4I8e2hkD7OE+36wynJ6dpy6vzGho2ulB5ikTHzVSQEi9PjlhKVhYVObptJ2nnNE1YEEKvECxF2b2etwz82SakMNVbdS/o+nSRFyUhkvIaaQtXnG1hn2+pkqM9dxkhkqbsAggmUbdqmz4Q5bjXRvxog3hBJ3AbESIJqUduN7wpfkjRFn6a8xseckBXz61bE0pIPTKRcSDOlh9v3gvAgjwvLq45bTNhJGC2Lef1rrwCfKgGJGuKRKcSVH7/FRFjdK4U+hj99DmjWaggknakirW2YPhOBiJiYf8qNDF3Kfgj4W6Yk33uUYgkStUUMs6QcUgAxWCAIs6R8SxSiiNSLuz/yC9yrDTz3D24GwAAAABJRU5ErkJggg==) no-repeat;
+    background-size: 51px 35px
+}
+.main .item-password .btn-on {
+    background: url(data:image/png;base64,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) no-repeat;
+    background-size: 51px 35px
+}
+.main .item-captcha #captcha-img {
+    position: absolute;
+    right: 0;
+    top: 9px;
+    width: 79px;
+    height: 25px;
+    padding-left: 7px;
+    border-left: 1px solid #d7d7d7
+}
+
+.main .item-btns .btn-submit,
+.main .item-btns .btn-next {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    background: #f25454;
+    text-decoration: none;
+    line-height: 39px;
+    text-align: center;
+    font-size: 17px;
+    color: #fff
+}
+.main .item-btns .btn-disabled {
+    background: #e2e2e2;
+    cursor: default;
+    color: #bdbdbd
+}
+.main .item-option {
+    padding-top: 20px;
+    margin-bottom: 34px;
+    font-size: 14px;
+}
+.main .item-option .left {
+    float: left;
+    width: 50%;
+}
+.main .item-option .right {
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+.main .item-option .left a,
+.main .item-option .right a {
+    color: #686868;
+    font-size: 15px;
+    border-bottom: 1px solid #686868;
+    height: 18px;
+    display: inline-block;
+}

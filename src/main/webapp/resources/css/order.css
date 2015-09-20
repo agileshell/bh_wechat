@@ -1,0 +1,152 @@
+.wrap {
+	min-width: 320px;
+	min-height: 320px;
+	margin: 0 auto;
+}
+
+.order-con {
+	background-color: #f1f1f5;
+}
+
+.order-list {
+	position: relative;
+	top: 0px;
+}
+
+.order-list li {
+	display: list-item;
+	text-align: center;
+}
+
+.order-box {
+	margin-top: 10px;
+	background: #FFF;
+	border-top: 1px solid #c8c7cc;
+	border-bottom: 1px solid #c8c7cc;
+	display: inline-block;
+	width: 100%;
+}
+
+.new-mu_l2a {
+	display: block;
+	overflow: hidden;
+	clear: both;
+	padding: .22em 5px;
+}
+
+.order-box .order-msg {
+	margin-top: 10px;
+}
+
+img {
+	width: 88px;
+	height: 88px;
+}
+
+.order-box img {
+	float: left;
+	border: 1px solid #e4e4e4;
+	margin-right: 20px;
+}
+
+.order-box p {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	vertical-align: bottom;
+}
+
+.order-box .order-msg .img_ware {
+	width: 70px;
+	height: 70px;
+}
+
+.order-box .order-msg .title {
+	height: 35px;
+	overflow: hidden;
+	font-size: 16px;
+}
+
+.order-box .order-msg .price {
+	color: #c00000;
+	height: 20px;
+	font-size: 14px;
+}
+
+.order-box .order-msg .order-data {
+	color: #7b7b7b;
+	height: 20px;
+}
+
+.order-width {
+	color: #707070;
+	font-size: 14px;
+	margin: 0 10px;
+}
+
+.order-width p {
+	min-height: 30px;
+}
+
+.pay-order, .cancel-order {
+	clear: left;
+	margin: 0 auto;
+	width: 140px;
+	height: 30px;
+	background-color: #c00000;
+	font-size: 16px;
+	text-align: center;
+	line-height: 30px;
+	vertical-align: middle;
+	border-radius: 3px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	display: inline-block;
+	color: #FFF;
+}
+
+.cancel-order {
+  margin-left: 20px;
+  background-color: #bf9d5a;
+}
+
+.pay-order a, .cancel-order a{
+	color: #FFF;
+}
+
+.order-list li {
+	display: list-item;
+	text-align: center;
+}
+
+.book-list li {
+	padding: 5px 0;
+	margin-left: 10px;
+}
+
+.border-bottom {
+	border-bottom: 1px solid #e4e4e4;
+}
+
+.usr-name {
+	margin-top: 5px;
+}
+
+.usr-addr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.empty-list-message {
+	font-size: 16px;
+	position: fixed;
+	top: 160px;
+	width: 100%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	text-align: center;
+	color: #bbb;
+	border: 0 !important;
+}
