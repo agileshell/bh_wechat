@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../config.jsp"%>
 <head>
     <title>填写订单</title>
@@ -98,7 +99,7 @@
         <div class="step5 border-1px" style="margin-bottom: 3.125em;">
             <div class="s-item">
                 <div class="sitem-l">商品金额</div>
-                <div class="sitem-r">￥${sessionScope.totalPrice}</div>
+                <div class="sitem-r">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="00.00#"/></div>
             </div>
             <div class="s-item">
                 <div class="sitem-l">宝汇币</div>
@@ -117,7 +118,7 @@
 
     <div class="pay-bar" id="pay-bar">
         <div class="payb-con">
-            实付款：￥<span id="payMoney">${sessionScope.totalPrice}</span>
+            实付款：￥<span id="payMoney"><fmt:formatNumber value="${sessionScope.totalPrice}" pattern="00.00#"/></span>
         </div>
         <a class="payb-btn" onclick="javascript:submitOrder();" href="javascript:void(0);"> 提交订单 </a>
     </div>
@@ -129,7 +130,7 @@
         $("#paymentMethod").val(id);
 
         var baodou = parseInt($("#baodou").val());
-        var needPay = parseFloat($("#totalPrice").val()) - baodou / 100;
+        var needPay = parseFloat($("#totalPrice").val()) - baodou / 100, needPay = needPay.toFixed(2);
         var payMoney = $("#payMoney");
         if (id == 1) {
             payMoney.text(needPay);
@@ -170,7 +171,7 @@
             }
 
             var baodou = parseInt($("#baodou").val());
-            var needPay = parseFloat($("#totalPrice").val());
+            var needPay = parseFloat($("#totalPrice").val()), needPay = needPay.toFixed(2);
             if (baodou > 0) {
                 needPay = needPay - baodou / 100;
             }
