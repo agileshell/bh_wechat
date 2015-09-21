@@ -51,7 +51,7 @@ public enum ApiUri {
     DELETE_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/{addressId}"), HttpMethod.DELETE),
 
     // 设置默认地址
-    SET_DEFAULT_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/{addressId}/default"), HttpMethod.POST),
+    SET_DEFAULT_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/{addressId}/defaults"), HttpMethod.POST),
 
     // 获取默认地址
     GET_DEFAULT_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/default"), HttpMethod.GET),
