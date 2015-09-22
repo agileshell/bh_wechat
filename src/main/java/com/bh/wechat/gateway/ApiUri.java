@@ -39,22 +39,22 @@ public enum ApiUri {
     CREATE_ADDRESS(GlobalProperties.API_DOMAIN.concat("address"), HttpMethod.POST),
 
     // 获取地址详情
-    GET_ADDRESS_DETAIL(GlobalProperties.API_DOMAIN.concat("address/{addressId}"), HttpMethod.GET),
-
-    // 获取地区
-    GET_LOCATION(GlobalProperties.API_DOMAIN.concat("locations/{parentId}"), HttpMethod.GET),
+    GET_ADDRESS_DETAIL(GlobalProperties.API_DOMAIN.concat("address/GetAdd/{addressId}"), HttpMethod.GET),
 
     // 修改地址
-    UPDATE_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/{addressId}"), HttpMethod.POST),
+    UPDATE_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/UpAdd/{addressId}"), HttpMethod.POST),
 
     // 删除地址
-    DELETE_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/{addressId}"), HttpMethod.DELETE),
+    DELETE_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/DeAdd/{addressId}"), HttpMethod.DELETE),
 
     // 设置默认地址
-    SET_DEFAULT_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/{addressId}/defaults"), HttpMethod.POST),
+    SET_DEFAULT_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/defaults/{addressId}/default"), HttpMethod.POST),
 
     // 获取默认地址
-    GET_DEFAULT_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/default"), HttpMethod.GET),
+    GET_DEFAULT_ADDRESS(GlobalProperties.API_DOMAIN.concat("address/defaults"), HttpMethod.GET),
+
+    // 获取地区
+    GET_LOCATION(GlobalProperties.API_DOMAIN.concat("locations/GetID/{parentId}"), HttpMethod.GET),
 
     // 站内信息列表
     GET_MESSAGES(GlobalProperties.API_DOMAIN.concat("messages"), HttpMethod.GET),
@@ -69,7 +69,7 @@ public enum ApiUri {
     GET_PRODUCTS(GlobalProperties.API_DOMAIN.concat("products"), HttpMethod.GET),
 
     // 商品详情
-    GET_PRODUCT_DETAIL(GlobalProperties.API_DOMAIN.concat("product/{productId}"), HttpMethod.GET),
+    GET_PRODUCT_DETAIL(GlobalProperties.API_DOMAIN.concat("product/GetID/{productId}"), HttpMethod.GET),
 
     // 获取购物车商品列表
     GET_CART_PRODUCTS(GlobalProperties.API_DOMAIN.concat("cart/products"), HttpMethod.GET),
@@ -78,10 +78,10 @@ public enum ApiUri {
     ADD_CART_PRODUCT(GlobalProperties.API_DOMAIN.concat("cart/product/{productId}"), HttpMethod.POST),
 
     // 从购物车中移除商品
-    REMOVE_CART_PRODUCT(GlobalProperties.API_DOMAIN.concat("cart/{cartProductId}"), HttpMethod.DELETE),
+    REMOVE_CART_PRODUCT(GlobalProperties.API_DOMAIN.concat("cart/DeID/{cartProductId}"), HttpMethod.DELETE),
 
     // 修改购物车中商品的数量
-    UPDATE_CART_PRODUCT(GlobalProperties.API_DOMAIN.concat("cart/{cartProductId}"), HttpMethod.POST),
+    UPDATE_CART_PRODUCT(GlobalProperties.API_DOMAIN.concat("cart/UpID/{cartProductId}"), HttpMethod.POST),
 
     // 获取订单列表
     GET_ORDERS(GlobalProperties.API_DOMAIN.concat("orders"), HttpMethod.GET),
@@ -93,10 +93,10 @@ public enum ApiUri {
     CREATE_ORDER(GlobalProperties.API_DOMAIN.concat("order"), HttpMethod.POST),
 
     // 获取订单详情
-    GET_ORDER_DETAIL(GlobalProperties.API_DOMAIN.concat("order/{orderId}"), HttpMethod.GET),
+    GET_ORDER_DETAIL(GlobalProperties.API_DOMAIN.concat("order/GetID/{orderId}"), HttpMethod.GET),
 
     // 取消订单
-    CANCEL_ORDER(GlobalProperties.API_DOMAIN.concat("order/{orderId}"), HttpMethod.DELETE),
+    CANCEL_ORDER(GlobalProperties.API_DOMAIN.concat("order/DeID/{orderId}"), HttpMethod.DELETE),
 
     // 支付订单
     PAY_ORDER(GlobalProperties.API_DOMAIN.concat("order/{orderId}/pay"), HttpMethod.GET),
@@ -105,13 +105,13 @@ public enum ApiUri {
     GET_CAMPAIGNS(GlobalProperties.API_DOMAIN.concat("campaigns"), HttpMethod.GET),
 
     // 活动详情
-    GET_CAMPAIGN_DETAIL(GlobalProperties.API_DOMAIN.concat("campaign/{campaignId}"), HttpMethod.GET),
+    GET_CAMPAIGN_DETAIL(GlobalProperties.API_DOMAIN.concat("campaign/GetID/{campaignId}"), HttpMethod.GET),
 
     // 帮助列表
     GET_HELPS(GlobalProperties.API_DOMAIN.concat("helps"), HttpMethod.GET),
 
     // 帮助详情
-    GET_HELP_DETAIL(GlobalProperties.API_DOMAIN.concat("help/{helpId}"), HttpMethod.GET);
+    GET_HELP_DETAIL(GlobalProperties.API_DOMAIN.concat("help/GetID/{helpId}"), HttpMethod.GET);
 
     public final String uri;
 

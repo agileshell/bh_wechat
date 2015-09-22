@@ -6,7 +6,6 @@ import com.bh.wechat.gateway.ApiUri;
 import com.bh.wechat.gateway.Parameter;
 import com.bh.wechat.gateway.URI;
 
-
 @URI(uri = ApiUri.DIRECTLY_CREATE_ORDER)
 public class OrderCreateDirectlyRequest implements Serializable {
 
@@ -32,6 +31,9 @@ public class OrderCreateDirectlyRequest implements Serializable {
 
     @Parameter(required = false)
     private int baodou;
+
+    @Parameter
+    private String payPassword;
 
     public String getToken() {
         return token;
@@ -89,5 +91,12 @@ public class OrderCreateDirectlyRequest implements Serializable {
         this.baodou = baodou;
     }
 
+    public String getPayPassword() {
+        return payPassword;
+    }
+
+    public void setPayPassword(String payPassword) {
+        this.payPassword = payPassword;
+    }
 
 }

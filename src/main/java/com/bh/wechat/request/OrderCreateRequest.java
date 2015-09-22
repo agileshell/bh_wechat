@@ -32,6 +32,9 @@ public class OrderCreateRequest implements Serializable {
     @Parameter(required = false)
     private int baodou;
 
+    @Parameter
+    private String payPassword;
+
     public String getToken() {
         return token;
     }
@@ -70,6 +73,14 @@ public class OrderCreateRequest implements Serializable {
 
     public void setBaodou(int baodou) {
         this.baodou = baodou;
+    }
+
+    public String getPayPassword() {
+        return payPassword;
+    }
+
+    public void setPayPassword(String payPassword) {
+        this.payPassword = payPassword;
     }
 
 }
