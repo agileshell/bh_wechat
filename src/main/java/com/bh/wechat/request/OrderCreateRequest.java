@@ -32,7 +32,7 @@ public class OrderCreateRequest implements Serializable {
     @Parameter(required = false)
     private int baodou;
 
-    @Parameter
+    @Parameter(required = false)
     private String payPassword;
 
     public String getToken() {

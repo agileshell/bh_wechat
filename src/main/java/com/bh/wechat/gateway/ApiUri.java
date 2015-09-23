@@ -62,6 +62,15 @@ public enum ApiUri {
     // 阅读站内消息
     GET_MESSAGE_DETAIL(GlobalProperties.API_DOMAIN.concat("message/{messageId}"), HttpMethod.GET),
 
+    // 宝汇币充值
+    RECHARGE_BH_POINTS(GlobalProperties.API_DOMAIN.concat("bhPoints/recharge"), HttpMethod.POST),
+    // 宝汇币提现
+    WITHDRAW_BH_POINTS(GlobalProperties.API_DOMAIN.concat("bhPoints/withdraw"), HttpMethod.POST),
+    // 宝汇币提现明细
+    BH_POINTS_WITHDRAW_HISTORY(GlobalProperties.API_DOMAIN.concat("bhPoints/withdraw/history"), HttpMethod.GET),
+    // 交易明细
+    CURRENCY_DEAL_HISTORY(GlobalProperties.API_DOMAIN.concat("deal/history/{currency}"), HttpMethod.GET),
+
     // 分类
     GET_CATEGORIES(GlobalProperties.API_DOMAIN.concat("categories"), HttpMethod.GET),
 
