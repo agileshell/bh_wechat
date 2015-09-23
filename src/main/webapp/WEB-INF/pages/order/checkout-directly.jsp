@@ -114,6 +114,13 @@
                 <div id="pay-c" class="sitem-r">0</div>
             </div>
         </div>
+        <div id="payPasswordBox" class="step4 border-1px" style="margin-bottom: 3.125em;">
+            <div class="s-item">
+                <div class="sitem-m">
+                    支付密码：<span><input id="payPassword" name="payPassword"></span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="pay-bar" id="pay-bar">
@@ -133,8 +140,10 @@
         var needPay = parseFloat($("#totalPrice").val()) - baodou / 100, needPay = needPay.toFixed(2);
         var payMoney = $("#payMoney");
         if (id == 1) {
+            $("#payPasswordBox").hide();
             payMoney.text(needPay);
         } else if (id == 2) {
+            $("#payPasswordBox").show();
             $("#pay-b").text(0);
             var totalBhPoints = parseInt($("#totalBhPoints").val());
             if (needPay < totalBhPoints) {
@@ -177,9 +186,14 @@
             }
 
             var paymentMethod = $("#paymentMethod").val();
+            var payPassword = $("#payPassword").val();
             if (paymentMethod == 2) {
                 if (parseInt($("#totalBhPoints").val()) < needPay) {
                     alert("宝汇币不足");
+                    return;
+                }
+                if (payPassword.length <= 0) {
+                    alert("您使用了虚拟资产，为保证安全，请输入支付密码");
                     return;
                 }
             } else if (paymentMethod == 3) {
@@ -200,7 +214,8 @@
                     qty : qty,
                     baodou : baodou,
                     addressId : addressId,
-                    paymentMethod: paymentMethod
+                    paymentMethod: paymentMethod,
+                    payPassword: payPassword
                 },
                 dataType : 'json',
                 success : function(rdata) {
