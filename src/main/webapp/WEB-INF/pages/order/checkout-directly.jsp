@@ -7,6 +7,10 @@
     <link rel="stylesheet" type="text/css" href="resources/css/checkout.css?v=${version}" />
 </head>
 
+<script type="text/javascript">
+    $('body').css('background', '#f0f2f5');
+</script>
+
 <!-- header start -->
 <c:set var="header_name" value="填写订单" />
 <c:set var="current_menu" value="my-account" />
@@ -14,7 +18,7 @@
 <!-- header end -->
 
 <!-- order start -->
-<div class="common-wrapper">
+<div class="common-wrapper" style="position: inherit;">
     <input type="hidden" id="productId" value="${sessionScope.product.productId}"/>
     <input type="hidden" id="guige" value='{"color":"${sessionScope.guige.color}","size":"${sessionScope.guige.size}"}' />
     <input type="hidden" id="qty" value="${sessionScope.qty}"/>
@@ -112,13 +116,6 @@
                 <div id="pay-c" class="sitem-r">0</div>
             </div>
         </div>
-        <div id="payPasswordBox" class="step4 border-1px" style="margin-bottom: 3.125em;">
-            <div class="s-item">
-                <div class="sitem-m">
-                    支付密码：<span><input id="payPassword" name="payPassword"></span>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="pay-bar" id="pay-bar">
@@ -127,8 +124,59 @@
         </div>
         <a class="payb-btn" onclick="javascript:submitOrder();" href="javascript:void(0);"> 提交订单 </a>
     </div>
+    <!-- 弹层 -->
+    <div class="popup-w" style="display:none;"></div>
+    <div id="inputPwdWindow" class="confirm-w" style="display:none;">
+        <div class="confirm">
+            <div class="confirm-txt">
+                <div class="m pay-password">
+                    <div>
+                        <h3>安全验证</h3>
+                    </div>
+                    <div class="mc" style="margin-top:0!important;">
+                        <p>您使用了宝汇币，为保证安全，请进行验证</p>
+                        <p class="pp-red" id="erroTip"></p>
+                        <div class="input-w">
+                            <input type="password" id="payPassword" autocomplete="off" name="payPassword" placeholder="输入支付密码">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="confirm-btn">
+                <a href="javascript:;" onclick="closeInputPwdWindow()" class="btn2 ctn01">取消</a>
+                <a href="javascript:;" onclick="virtualPaySubmit()" id="submiOrder" class="btn2 ctn02 pass-no pp-btn">确定使用</a>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
+    var background = document.getElementById("background");
+    var openPwdWindowHeight = $("#openPwdWindow").height();
+    function backScroll() {
+        background.style.top = document.body.scrollTop + "px"
+    }
+    window.onscroll = backScroll;
+    function openPwdLinkWindow() {
+        $(".confirm-w").css({
+            display: "block"
+        });
+        $(".popup-w").css({
+            height: $(document).height(),
+            display: "block"
+        });
+        $("#openPwdWindow").css({
+            top: $(window).scrollTop() + $(window).height() / 2 - openPwdWindowHeight / 2,
+            display: "block"
+        })
+    }
+    function closeInputPwdWindow() {
+        $(".popup-w").css({
+            display: "none"
+        });
+        $("#inputPwdWindow").css({
+            display: "none"
+        })
+    }
     function choosePayType(id) {
         $(".btn3").removeClass("btn3-ch");
         $("#paymentMethod" + id).addClass("btn3-ch");
@@ -138,10 +186,8 @@
         var needPay = parseFloat($("#totalPrice").val()) - baodou / 100, needPay = needPay.toFixed(2);
         var payMoney = $("#payMoney");
         if (id == 1) {
-            $("#payPasswordBox").hide();
             payMoney.text(needPay);
         } else if (id == 2) {
-            $("#payPasswordBox").show();
             $("#pay-b").text(0);
             var totalBhPoints = parseInt($("#totalBhPoints").val());
             if (needPay < totalBhPoints) {
@@ -164,45 +210,57 @@
         }
     }
 
+    $("#payPassword").on("input", function() {
+        if (this.value.length > 0) {
+            $("#submiOrder").removeClass("pass-no");
+        } else {
+            $("#submiOrder").addClass("pass-no");
+        }
+    });
+
     function submitOrder() {
-        if (confirm("确定要提交订单吗？")) {
-            var addressId = $("#addressId").val();
-            if (addressId == '' || addressId <= 0) {
-                alert("选择一个收货地址");
+        var addressId = $("#addressId").val();
+        if (addressId == '' || addressId <= 0) {
+            alert("选择一个收货地址");
+            return;
+        }
+
+        var qty = $("#qty").val();
+        if ($("#inventory").val() < qty) {
+            alert("库存不足");
+        }
+
+        var baodou = parseInt($("#baodou").val());
+        var needPay = parseFloat($("#totalPrice").val()), needPay = needPay.toFixed(2);
+        if (baodou > 0) {
+            needPay = needPay - baodou / 100;
+        }
+
+        var paymentMethod = $("#paymentMethod").val();
+        if (paymentMethod == 2) {
+            if (parseInt($("#totalBhPoints").val()) < needPay) {
+                alert("宝汇币不足");
                 return;
             }
-
-            var qty = $("#qty").val();
-            if ($("#inventory").val() < qty) {
-                alert("库存不足");
+        } else if (paymentMethod == 3) {
+            if (parseInt($("#totalQianPoints").val()) < needPay) {
+                alert("乾币不足");
+                return;
             }
+        }
 
-            var baodou = parseInt($("#baodou").val());
-            var needPay = parseFloat($("#totalPrice").val()), needPay = needPay.toFixed(2);
-            if (baodou > 0) {
-                needPay = needPay - baodou / 100;
-            }
+        virtualPaySubmit();
+    }
 
-            var paymentMethod = $("#paymentMethod").val();
-            var payPassword = $("#payPassword").val();
-            if (paymentMethod == 2) {
-                if (parseInt($("#totalBhPoints").val()) < needPay) {
-                    alert("宝汇币不足");
-                    return;
-                }
-                if (payPassword.length <= 0) {
-                    alert("您使用了虚拟资产，为保证安全，请输入支付密码");
-                    return;
-                }
-            } else if (paymentMethod == 3) {
-                if (parseInt($("#totalQianPoints").val()) < needPay) {
-                    alert("乾币不足");
-                    return;
-                }
-            }
-
+    function virtualPaySubmit() {
+        var paymentMethod = $("#paymentMethod").val();
+        if (paymentMethod != 2 || (paymentMethod == 2 && $("#payPassword").val().length > 0)) {
             var productId = $("#productId").val();
             var guige = $("#guige").val();
+            var qty = $("#qty").val();
+            var baodou = parseInt($("#baodou").val());
+            var addressId = $("#addressId").val();
+            var payPassword = $("#payPassword").val();
             $.ajax({
                 url : 'api/order/directly',
                 type : 'POST',
