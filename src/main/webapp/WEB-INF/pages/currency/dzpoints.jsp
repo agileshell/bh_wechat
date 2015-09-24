@@ -18,7 +18,7 @@
 
 <div class="bh-detail">
     <div>
-        <img width="100" src="currency.png">
+        <img width="100" height="100" src="resources/img/currency.png">
     </div>
     <div style="padding-top: 10px;">
         <span style="display:block; font-size:20px; font-weight:500;">我的宝豆</span>

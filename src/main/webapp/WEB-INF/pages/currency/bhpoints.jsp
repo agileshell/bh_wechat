@@ -42,5 +42,7 @@
 </div>
 
 <!-- footer start -->
-<%@ include file="../../layout/_footer.jsp"%>
+<div style="clear: both;">
+    <%@ include file="../../layout/_footer.jsp"%>
+</div>
 <!-- footer end -->
