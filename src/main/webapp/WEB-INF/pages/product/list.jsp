@@ -17,7 +17,7 @@
         <div id="layout_search_bar_cancel" class="header-icon-cancel">
             <span>取消</span>
         </div>
-        <div id="layout_urlblack" class="header-icon-back">
+        <div id="layout_urlblack" data-url="home" class="header-icon-back">
             <span>返回</span>
         </div>
         <form action="products" method="get" id="layout_searchForm" class="header-search-form">

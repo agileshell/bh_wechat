@@ -10,6 +10,7 @@
 <!-- header start -->
 <c:set var="header_name" value="支付订单" />
 <c:set var="current_menu" value="my-account" />
+<c:set var="back_url" value="orders?status=all" />
 <%@ include file="../../layout/_header_menu.jsp"%>
 <!-- header end -->
 

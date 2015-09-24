@@ -49,8 +49,7 @@ function pop(info) {
 }
 
 function pageBack() {
-	window.history.back();
-	window.location.reload();
+	window.location.href = document.referrer;//返回上一页并刷新 
 }
 
 function addLocalStorage(d) {
