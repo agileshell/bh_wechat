@@ -141,13 +141,13 @@
 
     <ul class="padding-list">
         <li>
-            <a href="javascript:void(0);">
+            <a href="bhPoints">
                 <p>${profile.bhPoints}</p>
                 <p>宝汇币</p>
             </a>
         </li>
         <li>
-            <a href="javascript:void(0);">
+            <a href="dzPoints">
                 <p>${profile.dzPoints}</p>
                 <p>宝豆</p>
             </a>

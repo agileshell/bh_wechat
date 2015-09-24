@@ -1,0 +1,72 @@
+.bh-detail {
+	padding-top: 30px;
+	width: 100%;
+	max-width: 640px;
+	min-width: 320px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.btn {
+	display: block;
+	text-align: center;
+	border: none;
+	height: 20px;
+	line-height: 20px;
+	font-size: 16px;
+	padding: 11px 0px;
+	-webkit-appearance: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+}
+
+.btn-recharge {
+	background: #43c117;
+	color: #fff;
+	display: block;
+}
+
+.btn-withdraw {
+	background: #f2f2f2;
+	display: block;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+.op-list {
+	width: 100%;
+}
+
+.op-list li {
+	clear: both;
+	padding: 8px 0 8px 15px;
+	border-top: 1px solid #f2f2f2;
+}
+
+.op-list li .div_left {
+	padding-top: 10px;
+	position: relative;
+	float: left;
+	text-align: left;
+	height: 50px
+}
+
+.op-list li .div_right {
+	padding: 20px 20px 0 0;
+	position: relative;
+	float: right;
+	height: 50px
+}
+
+.op-list li span {
+	display: block;
+	font-size: 15px;
+	line-height: 30px;
+}
+
+.op-list li .time {
+	color: #6a6a6a;
+}

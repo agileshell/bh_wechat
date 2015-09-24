@@ -32,6 +32,7 @@ import com.bh.wechat.service.AccountService;
 import com.bh.wechat.service.AddressService;
 import com.bh.wechat.service.CartService;
 import com.bh.wechat.service.CommonService;
+import com.bh.wechat.service.CurrencyService;
 import com.bh.wechat.service.MessageService;
 import com.bh.wechat.service.OrderService;
 import com.bh.wechat.service.ProductService;
@@ -69,6 +70,9 @@ public abstract class BaseController {
 
     @Autowired
     protected WeChatService weChatService;
+
+    @Autowired
+    protected CurrencyService currencyService;
 
     @Autowired
     protected HttpSession session;
