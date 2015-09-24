@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bh.wechat.exception.BhException;
@@ -83,7 +84,8 @@ public class OrderController extends BaseController {
 
     @RequestMapping(value = "/api/order/directly", method = RequestMethod.POST)
     @ResponseBody
-    public OrderDetailResponse createOrderDirectly(OrderCreateDirectlyRequest requestData) throws BhException {
+    public OrderDetailResponse createOrderDirectly(OrderCreateDirectlyRequest requestData,
+            @RequestParam String checkoutUuid) throws BhException {
         boolean isLogined = isLogin();
         if (!isLogined) {
             isLogined = autoLogin();
@@ -91,8 +93,17 @@ public class OrderController extends BaseController {
 
         OrderDetailResponse response = null;
         if (isLogined) {
-            requestData.setToken(getToken());
-            response = orderService.createOrderDirectly(requestData);
+            Object uuid = session.getAttribute("checkout_uuid");
+            if (null == uuid || !checkoutUuid.equals(uuid.toString())) {
+                response = new OrderDetailResponse();
+                response.setRet(1500);
+            } else {
+                requestData.setToken(getToken());
+                response = orderService.createOrderDirectly(requestData);
+                if (response.isSuccess()) {
+                    session.removeAttribute("checkout_uuid");
+                }
+            }
         } else {
             response = new OrderDetailResponse();
             response.setRet(1001);
@@ -103,7 +114,8 @@ public class OrderController extends BaseController {
 
     @RequestMapping(value = "/api/order", method = RequestMethod.POST)
     @ResponseBody
-    public OrderDetailResponse checkout(OrderCreateRequest requestData) throws BhException {
+    public OrderDetailResponse createOrder(OrderCreateRequest requestData, @RequestParam String checkoutUuid)
+            throws BhException {
         boolean isLogined = isLogin();
         if (!isLogined) {
             isLogined = autoLogin();
@@ -111,8 +123,17 @@ public class OrderController extends BaseController {
 
         OrderDetailResponse response = null;
         if (isLogined) {
-            requestData.setToken(getToken());
-            response = orderService.createOrder(requestData);
+            Object uuid = session.getAttribute("checkout_uuid");
+            if (null == uuid || !checkoutUuid.equals(uuid.toString())) {
+                response = new OrderDetailResponse();
+                response.setRet(1500);
+            } else {
+                requestData.setToken(getToken());
+                response = orderService.createOrder(requestData);
+                if (response.isSuccess()) {
+                    session.removeAttribute("checkout_uuid");
+                }
+            }
         } else {
             response = new OrderDetailResponse();
             response.setRet(1001);
@@ -172,6 +193,8 @@ public class OrderController extends BaseController {
         }
 
         if (isLogined) {
+            session.setAttribute("checkout_uuid", System.currentTimeMillis());
+
             session.setAttribute("qty", qty);
 
             GuigeModel guigeModel = JacksonUtils.parse(guige, GuigeModel.class);
@@ -208,6 +231,8 @@ public class OrderController extends BaseController {
         }
 
         if (isLogined) {
+            session.setAttribute("checkout_uuid", System.currentTimeMillis());
+
             CartProductListModel cartProductListModel = JacksonUtils.parse(products, CartProductListModel.class);
             List<CartProductModel> cartProducts = cartProductListModel.getCartProducts();
             session.setAttribute("cartProducts", cartProducts);

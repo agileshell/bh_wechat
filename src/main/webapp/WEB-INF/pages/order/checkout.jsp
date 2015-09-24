@@ -19,6 +19,8 @@
 
 <!-- order start -->
 <div class="common-wrapper" style="position: inherit;">
+    <input type="hidden" id="checkout_uuid" value="${sessionScope.checkout_uuid}"/>
+
     <input type="hidden" id="cartProductIds" value="${sessionScope.cartProductIds}"/>
     <input type="hidden" id="addressId" value="${sessionScope.addressId}"/>
 
@@ -146,20 +148,17 @@
 </div>
 <script type="text/javascript">
     var background = document.getElementById("background");
-    var openPwdWindowHeight = $("#openPwdWindow").height();
+    var openPwdWindowHeight = $("#inputPwdWindow").height();
     function backScroll() {
         background.style.top = document.body.scrollTop + "px"
     }
     window.onscroll = backScroll;
     function openPwdLinkWindow() {
-        $(".confirm-w").css({
-            display: "block"
-        });
         $(".popup-w").css({
             height: $(document).height(),
             display: "block"
         });
-        $("#openPwdWindow").css({
+        $("#inputPwdWindow").css({
             top: $(window).scrollTop() + $(window).height() / 2 - openPwdWindowHeight / 2,
             display: "block"
         })
@@ -240,7 +239,11 @@
             }
         }
 
-        openPwdLinkWindow();
+        if (paymentMethod == 2) {
+            openPwdLinkWindow();
+        } else {
+            virtualPaySubmit();
+        }
     }
 
     function virtualPaySubmit() {
@@ -258,7 +261,8 @@
                     paymentMethod : paymentMethod,
                     baodou : baodou,
                     addressId : addressId,
-                    payPassword: payPassword
+                    payPassword: payPassword,
+                    checkoutUuid: $("#checkout_uuid").val()
                 },
                 dataType : 'json',
                 success : function(rdata) {
@@ -274,6 +278,9 @@
                             case 3004:
                             case 3005:
                                 alert(rdata.msg);
+                                break;
+                            case 1500:
+                                alert("此订单已提交，请勿重复提交");
                                 break;
                             default:
                                 alert(rdata.msg);
