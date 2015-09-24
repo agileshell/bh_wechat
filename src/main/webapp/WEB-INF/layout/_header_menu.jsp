@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header>
     <div class="header-bar">
-        <div id="layout_urlblack" class="header-icon-back">
-            <span></span>
+        <div id="layout_urlblack" data-url="${back_url}" class="header-icon-back">
+            <span>返回</span>
         </div>
         <div class="header-title">${header_name}</div>
         <div class="header-icon-shortcut" id="layout_menuKey">

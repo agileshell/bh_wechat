@@ -10,6 +10,7 @@
 <!-- header start -->
 <c:set var="header_name" value="填写订单" />
 <c:set var="current_menu" value="my-account" />
+<c:set var="back_url" value="orders?status=all" />
 <%@ include file="../../layout/_header_menu.jsp"%>
 <!-- header end -->
 
@@ -41,9 +42,7 @@
                         </div>
                         <div class="mc step1-in-con">${sessionScope.address.fullAddress}</div>
                     </c:when>
-                    <c:otherwise>
-                    选择收货地址
-                    </c:otherwise>
+                    <c:otherwise>选择收货地址</c:otherwise>
                   </c:choose>
                 </a>
             </div>

@@ -27,7 +27,12 @@ $(document).ready(function() {
 
 	// 回退
 	$("#layout_urlblack").on("click", function() {
-		pageBack();
+		var data_url = $(this).attr("data-url");
+		if (data_url != '') {
+			window.location.href = data_url; 
+		} else {
+			pageBack();
+		}
 	});
 
 	// 首页
