@@ -46,25 +46,21 @@ a {
 	border-top: 1px solid #f2f2f2;
 }
 
-.op-list li .div_left {
-	padding-top: 10px;
-	position: relative;
-	float: left;
-	text-align: left;
-	height: 50px
+.op-list li .div_left{
+    padding: 5px 20px 10px 0;
+    position: relative;
+    float: left;
+    text-align: left;
 }
-
-.op-list li .div_right {
-	padding: 20px 20px 0 0;
-	position: relative;
-	float: right;
-	height: 50px
+.op-list li .div_right{
+    padding: 5px 20px 10px 0;
+    position: relative;
+    float: right;
 }
 
 .op-list li span {
 	display: block;
 	font-size: 15px;
-	line-height: 30px;
 }
 
 .op-list li .time {

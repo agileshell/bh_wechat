@@ -13,9 +13,6 @@
             <span></span>
         </div>
         <div class="header-title">宝豆</div>
-        <div>
-            <a href="deal/history/dzPoints">交易明细</a>
-        </div>
     </div>
 </header>
 

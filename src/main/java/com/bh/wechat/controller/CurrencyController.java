@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bh.wechat.exception.BhException;
+import com.bh.wechat.request.ListBhPointsWithdrawHistoryRequest;
 import com.bh.wechat.request.ListCurrencyDealRequest;
 import com.bh.wechat.response.AccountResponse;
+import com.bh.wechat.response.BhPointsWithdrawHistory;
+import com.bh.wechat.response.BhPointsWithdrawHistoryResponse;
 import com.bh.wechat.response.CurrencyDealHistory;
 import com.bh.wechat.response.CurrencyDealHistoryResponse;
 
@@ -108,5 +111,41 @@ public class CurrencyController extends BaseController {
         requestData.setCurrency(currency);
 
         return currencyService.listCurrencyDealHistory(requestData);
+    }
+
+    @RequestMapping(value = "/bhPoints/withdraw/history", method = RequestMethod.GET)
+    public String bhPointsWithdrawHistoryView(Model model) throws BhException {
+        boolean isLogined = isLogin();
+        if (!isLogined) {
+            if (hasOpenid()) {
+                isLogined = autoLogin();
+            } else {
+                return getOauthRedirectUrl("bhPoints/withdraw/history");
+            }
+        }
+
+        if (isLogined) {
+            ListBhPointsWithdrawHistoryRequest requestData = new ListBhPointsWithdrawHistoryRequest();
+            requestData.setToken(getToken());
+            BhPointsWithdrawHistoryResponse response = currencyService.listBhPointsWithdrawHistory(requestData);
+            if (response.isSuccess()) {
+                model.addAttribute("histories", response.getList());
+            } else {
+                model.addAttribute("histories", new ArrayList<BhPointsWithdrawHistory>());
+            }
+
+            return "currency/withdraw-history";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+    @RequestMapping(value = "/api/bhPoints/withdraw/history", method = RequestMethod.GET)
+    @ResponseBody
+    public BhPointsWithdrawHistoryResponse bhPointsWithdrawHistory(ListBhPointsWithdrawHistoryRequest requestData)
+            throws BhException {
+        requestData.setToken(getToken());
+
+        return currencyService.listBhPointsWithdrawHistory(requestData);
     }
 }

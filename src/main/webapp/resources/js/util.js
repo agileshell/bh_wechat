@@ -44,14 +44,8 @@ function pop(info) {
 }
 
 function pageBack() {
-	var a = window.location.href;
-	if (/#top/.test(a)) {
-		window.history.go(-2);
-		window.location.load(a);
-	} else {
-		window.history.back();
-		window.location.load(a);
-	}
+	window.history.back();
+	window.location.reload();
 }
 
 function addLocalStorage(d) {

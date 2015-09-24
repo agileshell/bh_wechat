@@ -36,7 +36,7 @@
             <a href="deal/history/bhPoints">交易明细</a>
         </span>
         <span style="position: relative; float: right; width: 50%;">
-            <a href="javascript:;">提现历史</a>
+            <a href="bhPoints/withdraw/history">提现历史</a>
         </span>
     </div>
 </div>

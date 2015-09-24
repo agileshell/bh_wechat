@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="../config.jsp"%>
 <head>
-    <title>交易明细</title>
+    <title>提现明细</title>
     <link rel="stylesheet" type="text/css" href="resources/css/currency.css?v=${version}" />
     <script type="text/javascript" src="resources/js/template.js?v=${version}"></script>
 </head>
@@ -13,7 +13,7 @@
         <div id="layout_urlblack" class="header-icon-back">
             <span></span>
         </div>
-        <div class="header-title">交易明细</div>
+        <div class="header-title">提现明细</div>
     </div>
 </header>
 
@@ -24,11 +24,12 @@
           <c:forEach items="${histories}" var="history">
             <li>
                 <div class="div_left">
-                    <span>${history.type}</span>
+                    <span>手续费：￥${history.fee}</span>
                     <span class="time">${history.dealTime}</span>
                 </div>
                 <div class="div_right">
                     <span>${history.amount}</span>
+                    <span>${history.status == 'success' ? '成功' : history.status == 'fail' ? '失败' : '处理中'}</span>
                 </div>
             </li>
           </c:forEach>
@@ -56,11 +57,18 @@
     {{each list}}
         <li>
             <div class="div_left">
-                <span>{{$value.type}}</span>
+                <span>手续费：￥{{$value.fee}}</span>
                 <span class="time">{{$value.dealTime}}</span>
             </div>
             <div class="div_right">
                 <span>{{$value.amount}}</span>
+                {{if $value.status == 'success'}}
+                    <span>成功</span>
+                {{elseif $value.status == 'fail'}}
+                    <span>失败</span>
+                {{else}}
+                    <span>处理中</span>
+                {{/if}}
             </div>
         </li>
     {{/each}}
@@ -76,7 +84,7 @@
         offset = current_page * limit;
 
         $.ajax({
-            url : 'api/deal/history/${currency}',
+            url : 'api/bhPoints/withdraw/history',
             type : 'GET',
             data: {offset: offset, limit: limit},
             dataType : 'json',
