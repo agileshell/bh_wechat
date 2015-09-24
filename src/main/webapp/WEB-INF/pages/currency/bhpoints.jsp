@@ -8,7 +8,7 @@
 
 <header>
     <div class="header-bar">
-        <div id="layout_urlblack" class="header-icon-back">
+        <div id="layout_urlblack" data-url="profile" class="header-icon-back">
             <span></span>
         </div>
         <div class="header-title">宝汇币</div>
@@ -25,10 +25,10 @@
     </div>
     <div style="padding-top: 30px;">
         <span style="display:block;">
-            <a href="javascript:;" id="recharge" class="btn btn-recharge" style="margin: 0 8% 0 8%;">充值</a>
+            <a href="recharge" class="btn btn-recharge" style="margin: 0 8% 0 8%;">充值</a>
         </span>
         <span style="display:block; padding-top: 15px;">
-            <a href="javascript:;" id="withdraw" class="btn btn-withdraw" style="margin: 0 8% 0 8%;">提现</a>
+            <a href="withdraw" class="btn btn-withdraw" style="margin: 0 8% 0 8%;">提现</a>
         </span>
     </div>
     <div style="padding: 50px 0 20px 0;">

@@ -28,7 +28,7 @@ $(document).ready(function() {
 	// 回退
 	$("#layout_urlblack").on("click", function() {
 		var data_url = $(this).attr("data-url");
-		if (data_url != '') {
+		if (data_url != '' && data_url != undefined ) {
 			window.location.href = data_url; 
 		} else {
 			pageBack();

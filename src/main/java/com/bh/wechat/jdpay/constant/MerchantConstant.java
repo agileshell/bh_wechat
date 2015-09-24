@@ -50,6 +50,10 @@ public class MerchantConstant {
      */
     private String wangyinServerPayUrl;
 
+    private String rechargeSuccessCallbackUrl;
+
+    private String rechargeFailCallbackUrl;
+
     public String getMerchantNum() {
         return merchantNum;
     }
@@ -121,4 +125,21 @@ public class MerchantConstant {
     public void setWangyinServerPayUrl(String wangyinServerPayUrl) {
         this.wangyinServerPayUrl = wangyinServerPayUrl;
     }
+
+    public String getRechargeSuccessCallbackUrl() {
+        return rechargeSuccessCallbackUrl;
+    }
+
+    public void setRechargeSuccessCallbackUrl(String rechargeSuccessCallbackUrl) {
+        this.rechargeSuccessCallbackUrl = rechargeSuccessCallbackUrl;
+    }
+
+    public String getRechargeFailCallbackUrl() {
+        return rechargeFailCallbackUrl;
+    }
+
+    public void setRechargeFailCallbackUrl(String rechargeFailCallbackUrl) {
+        this.rechargeFailCallbackUrl = rechargeFailCallbackUrl;
+    }
+
 }

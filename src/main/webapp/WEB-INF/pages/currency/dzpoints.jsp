@@ -9,7 +9,7 @@
 
 <header>
     <div class="header-bar">
-        <div id="layout_urlblack" class="header-icon-back">
+        <div id="layout_urlblack" data-url="profile" class="header-icon-back">
             <span></span>
         </div>
         <div class="header-title">宝豆</div>
