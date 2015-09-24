@@ -21,7 +21,7 @@
     </div>
     <div style="padding-top: 10px;">
         <span style="display:block; font-size:20px; font-weight:500;">我的宝汇币</span>
-        <span style="display:block; padding-top:5px; font-size:30px; font-weight:bold;">￥${bhPoints}</span>
+        <span style="display:block; padding-top:5px; font-size:30px; font-weight:bold;">${bhPoints}</span>
     </div>
     <div style="padding-top: 30px;">
         <span style="display:block;">
@@ -33,7 +33,7 @@
     </div>
     <div style="padding: 50px 0 20px 0;">
         <span style="position: relative; float: left; width: 50%;">
-            <a href="javascript:;">交易明细</a>
+            <a href="deal/history/bhPoints">交易明细</a>
         </span>
         <span style="position: relative; float: right; width: 50%;">
             <a href="javascript:;">提现历史</a>
@@ -42,7 +42,7 @@
 </div>
 
 <!-- footer start -->
-<div style="clear: both;">
+<div style="clear: both; padding-top: 10px">
     <%@ include file="../../layout/_footer.jsp"%>
 </div>
 <!-- footer end -->

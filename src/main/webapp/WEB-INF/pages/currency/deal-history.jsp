@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="../config.jsp"%>
 <head>
-    <title>宝豆</title>
+    <title>交易明细</title>
     <link rel="stylesheet" type="text/css" href="resources/css/currency.css?v=${version}" />
 </head>
 
@@ -12,22 +12,12 @@
         <div id="layout_urlblack" class="header-icon-back">
             <span></span>
         </div>
-        <div class="header-title">宝豆</div>
-        <div>
-            <a href="deal/history/dzPoints">交易明细</a>
-        </div>
+        <div class="header-title">交易明细</div>
     </div>
 </header>
 
 <div class="bh-detail">
     <div>
-        <img width="100" height="100" src="resources/img/currency.png">
-    </div>
-    <div style="padding-top: 10px;">
-        <span style="display:block; font-size:20px; font-weight:500;">我的宝豆</span>
-        <span style="display:block; padding-top:5px; font-size:30px; font-weight:bold;">${dzPoints}</span>
-    </div>
-    <div style="padding-top: 30px;">
         <input type="hidden" id="current_page" value="1"/>
         <ul class="op-list">
           <c:forEach items="${histories}" var="history">
@@ -42,11 +32,23 @@
             </li>
           </c:forEach>
         </ul>
-        <c:if test="${fn:length(histories) > 0}">
-            <div class="load-more" id="fetchMore" style="text-align:center; clear: both; border: 1px solid #f2f2f2;">
-                <span style="font-size:12px;" id="fetchMoreMsg">加载更多</span>
-            </div>
-        </c:if>
+        <c:choose>
+            <c:when test="${fn:length(histories) == 0}">
+                <div class="load-more" style="text-align:center; clear: both; border: 1px solid #f2f2f2;">
+                    <span style="font-size:12px;" id="fetchMoreMsg" >>空空如也</span>
+                </div>
+            </c:when>
+            <c:when test="${fn:length(histories) < 10}">
+                <div class="load-more" style="text-align:center; clear: both; border: 1px solid #f2f2f2;">
+                    <span style="font-size:12px;" id="fetchMoreMsg">没有了</span>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="load-more" id="fetchMore" style="text-align:center; clear: both; border: 1px solid #f2f2f2;">
+                    <span style="font-size:12px;" id="fetchMoreMsg">加载更多</span>
+                </div>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 <script id="history-template" type="text/html">
@@ -73,7 +75,7 @@
         offset = current_page * limit;
 
         $.ajax({
-            url : 'api/deal/history/dzPoints',
+            url : 'api/deal/history/${currency}',
             type : 'GET',
             data: {offset: offset, limit: limit},
             dataType : 'json',
