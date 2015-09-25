@@ -39,7 +39,7 @@
         <div class="step4 border-1px">
             <div class="s-item">
                 <div class="sitem-m">
-                    交易金额：<span>￥<fmt:formatNumber value="${tradeAmount}" pattern="#0.00#"/></span>
+                    交易金额：<span>￥<fmt:formatNumber value="${tradeAmount}" pattern="#0.00#"/>元</span>
                 </div>
             </div>
         </div>
