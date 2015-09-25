@@ -40,7 +40,7 @@
 
 .padding-list li {
 	float: left;
-	width: 33.333%;
+    width: 50%;
 	height: 60px;
 	vertical-align: middle;
 	box-shadow: 1px 0 0 rgba(200, 200, 200, 0.6);
@@ -150,12 +150,6 @@
             <a href="dzPoints">
                 <p>${profile.dzPoints}</p>
                 <p>宝豆</p>
-            </a>
-        </li>
-        <li>
-            <a href="javascript:void(0);">
-                <p>${profile.qianPoints}</p>
-                <p>乾币</p>
             </a>
         </li>
     </ul>
