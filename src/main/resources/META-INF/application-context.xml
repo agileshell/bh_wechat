@@ -22,6 +22,9 @@
         <property name="successCallbackUrl" value="${successCallbackUrl}"/>
         <property name="failCallbackUrl" value="${failCallbackUrl}"/>
         <property name="notifyUrl" value="${notifyUrl}"/>
+
+        <property name="rechargeSuccessCallbackUrl" value="rechargeSuccessCallbackUrl"/>
+        <property name="rechargeFailCallbackUrl" value="rechargeFailCallbackUrl"/>
     </bean>
 
     <context:component-scan base-package="com.bh.wechat.jdpay" />
