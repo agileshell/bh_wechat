@@ -252,8 +252,9 @@ public class CurrencyController extends BaseController {
         wePayMerchantSignReqDTO.setNotifyUrl(webPayReqDto.getNotifyUrl());
 
         // 商户签名
-        String signStr = SignUtil.sign4SelectedKeys(wePayMerchantSignReqDTO, merchantConstant.getPayRSAPrivateKey(),
-                getSignList(wePayMerchantSignReqDTO));
+        String signStr =
+                SignUtil.sign4SelectedKeys(wePayMerchantSignReqDTO, merchantConstant.getPayRSAPrivateKey(),
+                        getSignList(wePayMerchantSignReqDTO));
         webPayReqDto.setMerchantSign(signStr);
 
         if ("1.0".equals(version)) {
@@ -355,7 +356,7 @@ public class CurrencyController extends BaseController {
         BaseResponse response = null;
         if (isLogined) {
             requestData.setToken(getToken());
-            currencyService.withdrawBhPoints(requestData);
+            response = currencyService.withdrawBhPoints(requestData);
         } else {
             response = new BaseResponse();
             response.setRet(1001);
