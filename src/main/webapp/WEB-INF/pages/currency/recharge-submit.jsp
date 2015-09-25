@@ -27,7 +27,7 @@
         <div class="step4 border-1px">
             <div class="s-item">
                 <div class="sitem-m">
-                    交易金额：<span>￥${tradeAmount}</span>
+                    交易金额：<span>￥${tradeAmount}元</span>
                 </div>
             </div>
         </div>

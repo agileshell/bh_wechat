@@ -53,7 +53,7 @@
     <div style="padding: 50px 10px 0 10px;">
         <section class="input-box">
             <span class="beforeInput">金额</span>
-            <input id="amount" name="amount" class="enter" type="tel" maxlength="9" placeholder="请输入充值金额">
+            <input id="amount" name="amount" class="enter" type="tel" maxlength="9" placeholder="请输入充值金额（单位：元）">
         </section>
         <section id="warn-input" class="warn-input"></section>
     </div>
