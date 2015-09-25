@@ -97,7 +97,7 @@
         <div class="step5 border-1px">
             <div class="s-item">
                 <div class="sitem-l">商品金额</div>
-                <div class="sitem-r">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00#"/></div>
+                <div class="sitem-r">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00#"/>元</div>
             </div>
             <div class="s-item">
                 <div class="sitem-l">宝汇币</div>
@@ -116,7 +116,7 @@
 
     <div class="pay-bar" id="pay-bar">
         <div class="payb-con">
-            实付款：<span id="payMoney">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00#"/></span>
+            实付款：<span id="payMoney">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00#"/>元</span>
         </div>
         <a class="payb-btn" onclick="javascript:submitOrder();" href="javascript:void(0);"> 提交订单 </a>
     </div>

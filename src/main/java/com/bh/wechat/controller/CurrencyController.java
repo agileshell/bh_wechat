@@ -217,8 +217,8 @@ public class CurrencyController extends BaseController {
             return "currency/recharge-fail";
         }
 
-        double tradeAmount = requestData.getAmount();
-        String tradeName = "充值宝汇币" + tradeAmount;
+        int tradeAmount = (int) (requestData.getAmount() * 100);
+        String tradeName = "充值宝汇币" + requestData.getAmount();
 
         WebPayReqDto webPayReqDto = new WebPayReqDto();
         webPayReqDto.setVersion(version);
@@ -303,7 +303,7 @@ public class CurrencyController extends BaseController {
 
         httpServletRequest.setAttribute("serverUrl", merchantConstant.getWangyinServerPayUrl());
         httpServletRequest.setAttribute("tradeInfo", webPayReqDto);
-        httpServletRequest.setAttribute("tradeAmount", tradeAmount);
+        httpServletRequest.setAttribute("tradeAmount", requestData.getAmount());
         httpServletRequest.setAttribute("tradeName", tradeName);
 
         return "currency/recharge-submit";
