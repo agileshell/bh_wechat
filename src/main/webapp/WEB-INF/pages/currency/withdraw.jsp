@@ -41,14 +41,12 @@
     </style>
 </head>
 
-<header>
-    <div class="header-bar">
-        <div id="layout_urlblack" class="header-icon-back">
-            <span></span>
-        </div>
-        <div class="header-title">宝汇币提现</div>
-    </div>
-</header>
+<!-- header start -->
+<c:set var="header_name" value="宝汇币提现" />
+<c:set var="current_menu" value="my-account" />
+<c:set var="back_url" value="bhPoints" />
+<%@ include file="../../layout/_header_menu.jsp"%>
+<!-- header end -->
 
 <div>
     <div style="padding: 20px 10px 0 10px;">

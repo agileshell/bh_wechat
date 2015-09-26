@@ -6,7 +6,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <c:url value="<%=basePath%>" var="basePath" />
-<c:set var="version" value="1.3.5" />
+<c:set var="version" value="1.5.0" />
 
 <!DOCTYPE html>
 <!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
@@ -44,6 +44,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <decorator:head />
 
+<script type="text/javascript">
+    window.onpopstate = function() {
+        var currentState = event.state;
+        if (currentState == undefined || currentState == null) {
+            window.history.replaceState('reloaded', null, document.location);
+        } else {
+            window.history.replaceState(null, null, document.location);
+            window.location.reload();
+        }
+    };
+</script>
 </head>
 <body>
     <!--[if lte IE 7]>

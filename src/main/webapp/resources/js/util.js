@@ -49,7 +49,8 @@ function pop(info) {
 }
 
 function pageBack() {
-	window.location.href = document.referrer;//返回上一页并刷新 
+	window.history.back(); //返回上一页
+	//window.location.href = document.referrer;//返回上一页并刷新 
 }
 
 function addLocalStorage(d) {

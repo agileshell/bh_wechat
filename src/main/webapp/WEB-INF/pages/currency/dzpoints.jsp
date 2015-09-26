@@ -7,14 +7,12 @@
     <link rel="stylesheet" type="text/css" href="resources/css/currency.css?v=${version}" />
 </head>
 
-<header>
-    <div class="header-bar">
-        <div id="layout_urlblack" data-url="profile" class="header-icon-back">
-            <span></span>
-        </div>
-        <div class="header-title">宝豆</div>
-    </div>
-</header>
+<!-- header start -->
+<c:set var="header_name" value="宝豆" />
+<c:set var="current_menu" value="my-account" />
+<c:set var="back_url" value="profile" />
+<%@ include file="../../layout/_header_menu.jsp"%>
+<!-- header end -->
 
 <div class="bh-detail">
     <div>

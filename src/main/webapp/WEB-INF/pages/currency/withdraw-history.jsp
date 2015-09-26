@@ -8,14 +8,13 @@
     <script type="text/javascript" src="resources/js/template.js?v=${version}"></script>
 </head>
 
-<header>
-    <div class="header-bar">
-        <div id="layout_urlblack" class="header-icon-back">
-            <span></span>
-        </div>
-        <div class="header-title">提现明细</div>
-    </div>
-</header>
+<!-- header start -->
+<c:set var="header_name" value="提现明细" />
+<c:set var="current_menu" value="my-account" />
+<c:set var="back_url" value="bhPoints" />
+<%@ include file="../../layout/_header_menu.jsp"%>
+<!-- header end -->
+
 
 <div class="bh-detail">
     <div>

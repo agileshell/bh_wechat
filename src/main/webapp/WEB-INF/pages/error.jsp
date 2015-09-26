@@ -8,6 +8,7 @@
 
 <jsp:include page="../layout/_header_menu.jsp">
     <jsp:param name="header_name" value="404" />
+    <jsp:param name="back_url" value="home" />
 </jsp:include>
 
 <div class="errorpage">
