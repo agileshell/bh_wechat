@@ -18,8 +18,6 @@ public final class GlobalProperties {
 
     public static String WX_DOAMIN = "";
 
-    public static String UPLOAD_PATH = "";
-
     static {
         Properties globalProperties = PropertiesUtil.getProperties(PROPERTIES_PATH);
         if (PropertiesUtil.get(globalProperties, "wechat.app_id") != null) {
@@ -36,9 +34,6 @@ public final class GlobalProperties {
         }
         if (PropertiesUtil.get(globalProperties, "wx.domain") != null) {
             WX_DOAMIN = PropertiesUtil.get(globalProperties, "wx.domain").concat("/");
-        }
-        if (PropertiesUtil.get(globalProperties, "upload_path") != null) {
-            UPLOAD_PATH = PropertiesUtil.get(globalProperties, "upload_path").concat("/");
         }
     }
 
