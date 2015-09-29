@@ -5,38 +5,72 @@
     <title>宝汇币提现</title>
     <link rel="stylesheet" type="text/css" href="resources/css/currency.css?v=${version}" />
     <style>
-    .input-box {
-      position: relative;
-      background-color: #fff;
-      padding-bottom: 10px;
-    }
-    .input-box input {
+	.new-recharge {
+		padding: 20px 12px;
+	}
+	.new-recharge .new-txt2 {
+		display: block;
+		font-size: 14px;
+		color: #333;
+	}
+	.new-recharge .new-tit {
+		font-size: 18px;
+		color: #6e6e6e;
+	}
+	.new-recharge .new-tbl-cell {
+		font-size: 14px;
+		color: #6e6e6e;
+		background: none;
+		vertical-align: top;
+	}
+	.new-txt-w38 {
+		width: 65px;
+		height: 32px;
+		line-height: 32px;
+		text-align: left;
+	}
+	.new-box {
+		display: inline-block;
+		width: 90px;
+		height: 20px;
+		margin-left: 5px;
+		border: 1px solid #707070;
+		background-color: #fff;
+
+		font-size: 12px;
+  	    font-weight: normal;
+  	    color: #bdbdbd;
+	}
+	.new-select {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		width: 100%;
+		height: 30px;
+		opacity: 0;
+	}
+	.new-recharge .new-box {
+		width: 100%;
+		height: 30px;
+		margin-left: 0;
+		border: 0;
+		line-height: 30px;
+		font-size: 12px;
+		text-indent: 10px;
+	}
+    .info-input {
+      line-height: 15px;
+      font-size: 12px;
       padding-left: 60px;
-      height: 50px;
-    }
-    .beforeInput {
-      display: inline-block;
-      position: absolute;
-      top: 0;
-      left: 10px;
-      line-height: 25px;
-      padding: 15px 0;
-      font-size: 15px;
-    }
-    .enter {
-      display: block;
-      width: 100%;
-      line-height: 25px;
-      padding: 15px 0;
-      font-size: 15px;
-      color: #333;
+      color: #bdbdbd;
     }
     .warn-input {
       height: 2.1rem;
       line-height: 1.9rem;
       font-size: .6rem;
-      color: #e85156;
       text-indent: .938rem;
+      color: #e85156;
     }
     </style>
 </head>
@@ -49,27 +83,130 @@
 <!-- header end -->
 
 <div>
-    <div style="padding: 20px 10px 0 10px;">
-        <section class="input-box">
-            <span class="beforeInput">开户行</span>
-            <input id="bankName" name="bankName" class="enter" type="text" maxlength="30" placeholder="请输入开户行">
-        </section>
-        <section class="input-box">
-            <span class="beforeInput">开户名</span>
-            <input id="bankAccountName" name="bankAccountName" class="enter" type="text" maxlength="30" placeholder="请输入开户名">
-        </section>
-        <section class="input-box">
-            <span class="beforeInput">卡号</span>
-            <input id="bankAccountID" name="bankAccountID" class="enter" type="text" maxlength="30" placeholder="请输入卡号">
-        </section>
-        <section class="input-box">
-            <span class="beforeInput">金额</span>
-            <input id="amount" name="amount" class="enter" type="tel" maxlength="9" placeholder="请输入提现金额">
-        </section>
-        <section class="input-box">
-            <span class="beforeInput">密码</span>
-            <input id="payPassword" name="payPassword" class="enter" type="password" maxlength="20" placeholder="请输入唯宝汇支付密码">
-        </section>
+    <div class="new-recharge">
+   		<div class="new-mg-t10">
+	         <span class="new-tbl-type new-mg-b10">
+	             <span class="new-tbl-cell new-txt-w38">省份</span>
+	             <span class="new-tbl-cell">
+	                 <span class="new-input-span new-mg-b10">
+	                     <span class="new-box new-p-re">
+	                         <div id="province_text">请选择开户行所在省</div>
+	                         <span></span> 
+	                         <select id="address_province" class="new-select">
+	                             <option value="0">请选择开户行所在省</option>
+	                                <c:forEach items="${firstLocations}" var="firstLocation">
+                                        <option value="${firstLocation.locationId}" id="option${firstLocation.locationId}">${firstLocation.name}</option>
+                                    </c:forEach>
+	                         </select>
+	                     </span>
+	                 </span>
+	             </span>
+	         </span>
+	    </div>
+	    <div class="new-mg-t10">
+	         <span class="new-tbl-type new-mg-b10">
+	             <span class="new-tbl-cell new-txt-w38">城市</span>
+	             <span class="new-tbl-cell">
+	                 <span class="new-input-span new-mg-b10">
+	                     <span class="new-box new-p-re">
+	                         <div id="city_text">请选择开户行所在城市</div>
+	                         <span></span> 
+	                         <select id="address_city" class="new-select">
+	                             <option value="0">请选择开户行所在城市</option>
+	                         </select>
+	                     </span>
+	                 </span>
+	             </span>
+	         </span>
+	    </div>
+        <div class="new-mg-t10">
+            <span class="new-tbl-type new-mg-b10">
+                <span class="new-tbl-cell new-txt-w38">区县</span>
+                <span class="new-tbl-cell">
+                    <span class="new-input-span new-mg-b10">
+                        <span class="new-box new-p-re">
+                            <div id="location_text">请选择开户行所在区县</div>
+                            <span></span> 
+                            <select id="address_location" class="new-select">
+                                <option value="0">请选择开户行所在区县</option>
+                            </select>
+                        </span>
+                    </span>
+                </span>
+            </span>
+        </div>
+        <div class="new-mg-t10">
+            <span class="new-tbl-type new-mg-b10">
+                <span class="new-tbl-cell new-txt-w38">开户支行</span>
+                <span class="new-tbl-cell">
+                    <span class="new-input-span new-mg-b10">
+                        <span class="new-box new-p-re">
+                            <div id="bank_text">请选择开户银行</div>
+                            <span></span> 
+                            <select id="bank" class="new-select">
+                                <option value="">请选择开户银行</option>
+                                <option value="中国银行">中国银行</option>
+                                <option value="中国招商银行">中国招商银行</option>
+                                <option value="中国农业银行">中国农业银行</option>
+                                <option value="中国工商银行">中国工商银行</option>
+                                <option value="中国建设银行">中国建设银行</option>
+                                <option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+                                <option value="中国中信银行">中国中信银行</option>
+                                <option value="中国交通银行">中国交通银行</option>
+                                <option value="中国光大银行">中国光大银行</option>
+                                <option value="中国兴业银行">中国兴业银行</option>
+                                <option value="中国农业发展银行">中国农业发展银行</option>
+                                <option value="中国华夏银行">中国华夏银行</option>
+                                <option value="中国民生银行">中国民生银行</option>
+                                <option value="中国浦东发展银行">中国浦东发展银行</option>
+                            </select>
+                        </span>
+                    </span>
+                </span>
+            </span>
+        </div>
+        <div class="new-mg-t10">
+        	<span class="new-tbl-type new-mg-b10">
+        		<span class="new-tbl-cell new-txt-w38">开户支行</span>
+        		<span class="new-input-span">
+        			<input type="text"  id="sub_bank_name" class="new-input" autocomplete="off" placeholder="请输入开户支行">
+        		</span>
+        	</span>
+        </div>
+        <div class="new-mg-t10">
+        	<span class="new-tbl-type new-mg-b10">
+        		<span class="new-tbl-cell new-txt-w38">开户名</span>
+        		<span class="new-input-span">
+        			<input type="text" name="bankAccountName" id="bankAccountName" class="new-input" autocomplete="off" placeholder="请输入开户名">
+        		</span>
+        	</span>
+        </div>
+
+        <div class="new-mg-t10">
+        	<span class="new-tbl-type new-mg-b10">
+        		<span class="new-tbl-cell new-txt-w38">银行卡号</span>
+        		<span class="new-input-span">
+        			<input type="text" name="bankAccountID" id="bankAccountID" class="new-input" autocomplete="off" placeholder="请输入银行卡号">
+        		</span>
+        	</span>
+        </div>
+        <div class="new-mg-t10">
+        	<span class="new-tbl-type new-mg-b10">
+        		<span class="new-tbl-cell new-txt-w38">提现金额</span>
+        		<span class="new-input-span">
+        			<input type="text" name="amount" id="amount" class="new-input" autocomplete="off" placeholder="请输入提现金额">
+        		</span>
+        	</span>
+        </div>
+        <div class="new-mg-t10">
+        	<span class="new-tbl-type new-mg-b10">
+        		<span class="new-tbl-cell new-txt-w38">支付密码</span>
+        		<span class="new-input-span">
+        			<input type="text" name="payPassword" id="payPassword" class="new-input" autocomplete="off" placeholder="请输入唯宝汇支付密码">
+        		</span>
+        	</span>
+        	<span class="info-input">支付密码默认为您的登录密码,您可 以在个人中心进行修改</span>
+        </div>
         <section id="warn-input" class="warn-input"></section>
     </div>
     <div>
@@ -79,11 +216,96 @@
     </div>
 </div>
 <script>
+	var getChildren = function(parentId, elementId) {
+		var selector = $("#" + elementId);
+		selector.html("<option value='0'>请选择</option>");
+		$.ajax({
+			url : 'api/locations/' + parentId,
+			type : 'GET',
+			dataType : 'json',
+			success : function(data) {
+				$.each(data, function(index, value) {
+					selector.append("<option value='" + value.locationId + "' id='option" + value.locationId + "'>" + value.name + "</option>");
+				});
+			}
+		});
+	}
+	
+	var province_text = $("#province_text"), city_text = $("#city_text"), location_text = $("#location_text"), bank_text = $("#bank_text");
+	var address_province = $("#address_province"), address_city = $("#address_city"), address_location = $("#address_location"), bank = $("#bank");
+	address_province.on("change", function() {
+		var provinceId = $(this).val();
+		if (provinceId == 0) {
+			province_text.text('请选择开户行所在省');
+		} else {
+			province_text.text($("#option" + provinceId).text());
+			address_city.append(getChildren(provinceId, 'address_city'));
+		}
+
+		city_text.text('请选择开户行所在城市');
+		location_text.text('请选择开户行所在区县');
+		address_city.html("<option value='0'>请选择开户行所在城市</option>");
+		address_location.html("<option value='0'>请选择开户行所在区县</option>");
+	});
+	address_city.on("change", function() {
+		var cityId = $(this).val();
+		if (cityId == 0) {
+			city_text.text('请选择开户行所在城市');
+			location_text.text('请选择开户行所在区县');
+			address_location.html("<option value='0'>请选择开户行所在区县</option>");
+		} else {
+			city_text.text($("#option" + cityId).text());
+			address_location.append(getChildren(cityId, 'address_location'));
+		}
+	});
+	address_location.on("change", function() {
+		var locationId = $(this).val();
+		if (locationId == 0) {
+			location_text.text('请选择开户行所在区县');
+			address_location.html("<option value='0'>请选择开户行所在区县</option>");
+		} else {
+			location_text.text($("#option" + locationId).text());
+		}
+	});
+	bank.on("change", function() {
+		var bankname = $(this).val();
+		if (bankname.length <=0 ) {
+			bank_text.text('请选择开户银行');
+			bank_name.html("<option value=''>请选择开户银行</option>");
+		} else {
+			bank_text.text(bankname);
+		}
+	});
+
     $("#recharge").on("click", function() {
-        var bankName = $("#bankName").val();
+    	var bankNameProvince = $("#address_province").val();
+        if(bankNameProvince <= 0) {
+            $("#address_province").focus();
+            $("#warn-input").text("请选择开户行所在省");
+            return;
+        }
+    	var bankNameCity = $("#address_city").val();
+        if(bankNameCity <= 0) {
+            $("#address_city").focus();
+            $("#warn-input").text("请选择开户行所在城市");
+            return;
+        }
+    	var bankNameLocation = $("#address_location").val();
+        if(bankNameLocation <= 0) {
+            $("#address_location").focus();
+            $("#warn-input").text("请选择开户行所在区县");
+            return;
+        }
+        var bankName = $("#bank").val();
         if(bankName.length <= 0) {
-            $("#bankName").focus();
-            $("#warn-input").text("开户行格式错误，请重新输入");
+            $("#bank").focus();
+            $("#warn-input").text("请选择开户银行");
+            return;
+        }
+        var subBankName = $("#sub_bank_name").val();
+        if(subBankName.length <= 0) {
+            $("#sub_bank_name").focus();
+            $("#warn-input").text("请选择开户支行");
             return;
         }
 
@@ -116,11 +338,12 @@
             return;
         }
 
+        bankFullName = $("#option" + bankNameProvince).text() + ' ' + $("#option" + bankNameCity).text() + ' ' + $("#option" + bankNameLocation).text() + ' ' + bankName + ' ' + subBankName;
         $.ajax({
             url : 'api/withdraw',
             type : 'POST',
             data : {
-                bankName : bankName,
+                bankName : bankFullName,
                 bankAccountName : bankAccountName,
                 bankAccountID : bankAccountID,
                 amount : amount,

@@ -22,6 +22,7 @@ import com.bh.wechat.jdpay.utils.DESUtil;
 import com.bh.wechat.jdpay.utils.SignUtil;
 import com.bh.wechat.request.ListBhPointsWithdrawHistoryRequest;
 import com.bh.wechat.request.ListCurrencyDealRequest;
+import com.bh.wechat.request.LocationRequest;
 import com.bh.wechat.request.RechargeBhPointsRequest;
 import com.bh.wechat.request.WithdrawBhPointsRequest;
 import com.bh.wechat.response.AccountResponse;
@@ -30,6 +31,8 @@ import com.bh.wechat.response.BhPointsWithdrawHistory;
 import com.bh.wechat.response.BhPointsWithdrawHistoryResponse;
 import com.bh.wechat.response.CurrencyDealHistory;
 import com.bh.wechat.response.CurrencyDealHistoryResponse;
+import com.bh.wechat.response.Location;
+import com.bh.wechat.response.LocationResponse;
 import com.bh.wechat.response.RechargeBhPointsResponse;
 
 @Controller
@@ -339,6 +342,8 @@ public class CurrencyController extends BaseController {
         }
 
         if (isLogined) {
+        	model.addAttribute("firstLocations", getLocations(0));
+
             return "currency/withdraw";
         } else {
             return "redirect:/login";
@@ -363,5 +368,16 @@ public class CurrencyController extends BaseController {
         }
 
         return response;
+    }
+
+    private List<Location> getLocations(int parentId) throws BhException {
+        LocationRequest request = new LocationRequest();
+        request.setParentId(parentId);
+        LocationResponse locationResponse = addressService.getLocations(request);
+        if (locationResponse.isSuccess()) {
+            return locationResponse.getList();
+        } else {
+            return new ArrayList<Location>();
+        }
     }
 }

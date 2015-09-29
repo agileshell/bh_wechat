@@ -235,14 +235,15 @@
 			var provinceId = $(this).val();
 			if (provinceId == 0) {
 				province_text.text('请选择');
-				city_text.text('请选择');
-				location_text.text('请选择');
-				address_city.html("<option value='0'>请选择</option>");
-				address_location.html("<option value='0'>请选择</option>");
 			} else {
 				province_text.text($("#option" + provinceId).text());
 				address_city.append(getChildren(provinceId, 'address_city'));
 			}
+
+			city_text.text('请选择');
+			location_text.text('请选择');
+			address_city.html("<option value='0'>请选择</option>");
+			address_location.html("<option value='0'>请选择</option>");
 		});
 		address_city.on("change", function() {
 			var cityId = $(this).val();
