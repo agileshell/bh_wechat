@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../config.jsp"%>
 <head>
     <title>宝汇币</title>
@@ -19,7 +20,7 @@
     </div>
     <div style="padding-top: 10px;">
         <span style="display:block; font-size:20px; font-weight:500;">我的宝汇币</span>
-        <span style="display:block; padding-top:5px; font-size:30px; font-weight:bold;">${bhPoints}</span>
+        <span style="display:block; padding-top:5px; font-size:30px; font-weight:bold;"><fmt:formatNumber value="${bhPoints}" pattern="#0.00#"/></span>
     </div>
     <div style="padding-top: 30px;">
         <span style="display:block;">

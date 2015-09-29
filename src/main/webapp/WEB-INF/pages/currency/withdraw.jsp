@@ -205,7 +205,7 @@
         			<input type="text" name="payPassword" id="payPassword" class="new-input" autocomplete="off" placeholder="请输入唯宝汇支付密码">
         		</span>
         	</span>
-        	<span class="info-input">支付密码默认为您的登录密码,您可 以在个人中心进行修改</span>
+        	<span class="info-input">支付密码默认为您的登录密码,您可以在个人中心进行修改</span>
         </div>
         <section id="warn-input" class="warn-input"></section>
     </div>

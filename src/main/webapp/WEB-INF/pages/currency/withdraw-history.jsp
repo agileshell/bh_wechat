@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../config.jsp"%>
 <head>
     <title>提现明细</title>
@@ -23,11 +24,11 @@
           <c:forEach items="${histories}" var="history">
             <li>
                 <div class="div_left">
-                    <span>手续费：￥${history.fee}</span>
+                    <span>手续费：￥<fmt:formatNumber value="${history.fee}" pattern="#0.00#"/></span>
                     <span class="time">${history.dealTime}</span>
                 </div>
                 <div class="div_right">
-                    <span>${history.amount}</span>
+                    <span><fmt:formatNumber value="${history.amount}" pattern="#0.00#"/></span>
                     <span>${history.status == 'success' ? '成功' : history.status == 'fail' ? '失败' : '处理中'}</span>
                 </div>
             </li>
