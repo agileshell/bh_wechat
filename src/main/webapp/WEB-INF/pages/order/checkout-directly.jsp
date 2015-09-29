@@ -138,11 +138,11 @@
                     </div>
                     <div class="mc" style="margin-top:0!important;">
                         <p>您使用了宝汇币，为保证安全，请进行验证</p>
-                        <p>支付密码默认为您的登录密码,您可以在个人中心进行修改</p>
                         <p class="pp-red" id="erroTip"></p>
                         <div class="input-w">
                             <input type="password" id="payPassword" autocomplete="off" name="payPassword" placeholder="输入支付密码">
                         </div>
+                        <p>支付密码默认为您的登录密码,您可以在个人中心进行修改</p>
                     </div>
                 </div>
             </div>
