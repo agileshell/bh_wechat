@@ -86,7 +86,13 @@
             success : function(data) {
                 if (data.ret == 0) {
                     if(null != data.list && data.list.length > 0) {
-                        var html = template('history-template', data);
+                     	var sdata = data.list;
+                    	var slist = [];
+                    	for (var i = 0, j = sdata.length; i < j; i++) {
+                    		slist[i] = sdata[i];
+                    		slist[i].amount = slist[i].amount.toFixed(2);
+                    	}
+                        var html = template('history-template', {'list': slist});
                         $('.op-list').append(html);
                         $('#current_page').val(++current_page);
                         $('#fetchMoreMsg').html('加载更多');

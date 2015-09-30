@@ -24,11 +24,11 @@
           <c:forEach items="${histories}" var="history">
             <li>
                 <div class="div_left">
-                    <span>手续费：￥<fmt:formatNumber value="${history.fee}" pattern="#0.00#"/></span>
+                    <span>手续费：￥<fmt:formatNumber value="${history.fee}" pattern="#0.00"/></span>
                     <span class="time">${history.dealTime}</span>
                 </div>
                 <div class="div_right">
-                    <span><fmt:formatNumber value="${history.amount}" pattern="#0.00#"/></span>
+                    <span><fmt:formatNumber value="${history.amount}" pattern="#0.00"/></span>
                     <span>${history.status == 'success' ? '成功' : history.status == 'fail' ? '失败' : '处理中'}</span>
                 </div>
             </li>
@@ -97,7 +97,14 @@
             success : function(data) {
                 if (data.ret == 0) {
                     if(null != data.list && data.list.length > 0) {
-                        var html = template('history-template', data);
+                    	var sdata = data.list;
+                    	var slist = [];
+                    	for (var i = 0, j = sdata.length; i < j; i++) {
+                    		slist[i] = sdata[i];
+                    		slist[i].fee = slist[i].fee.toFixed(2);
+                    		slist[i].amount = slist[i].amount.toFixed(2);
+                    	}
+                        var html = template('history-template', {'list': slist});
                         $('.op-list').append(html);
                         $('#current_page').val(++current_page);
                         if (data.list.length < 10) {

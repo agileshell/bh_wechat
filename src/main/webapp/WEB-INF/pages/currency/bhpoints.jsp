@@ -20,7 +20,7 @@
     </div>
     <div style="padding-top: 10px;">
         <span style="display:block; font-size:20px; font-weight:500;">我的宝汇币</span>
-        <span style="display:block; padding-top:5px; font-size:30px; font-weight:bold;"><fmt:formatNumber value="${bhPoints}" pattern="#0.00#"/></span>
+        <span style="display:block; padding-top:5px; font-size:30px; font-weight:bold;"><fmt:formatNumber value="${bhPoints}" pattern="#0.00"/></span>
     </div>
     <div style="padding-top: 30px;">
         <span style="display:block;">

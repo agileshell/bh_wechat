@@ -143,7 +143,7 @@
     <ul class="padding-list">
         <li>
             <a href="bhPoints">
-                <p><fmt:formatNumber value="${profile.bhPoints}" pattern="#0.00#"/></p>
+                <p><fmt:formatNumber value="${profile.bhPoints}" pattern="#0.00"/></p>
                 <p>宝汇币</p>
             </a>
         </li>
