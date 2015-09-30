@@ -15,7 +15,7 @@ public class AccountResponse extends BaseResponse implements Serializable {
 
 	private String userName;
 
-	private float bhPoints;
+	private double bhPoints;
 
 	private int dzPoints;
 
@@ -53,17 +53,17 @@ public class AccountResponse extends BaseResponse implements Serializable {
 		this.userName = userName;
 	}
 
-	public float getBhPoints() {
+	public double getBhPoints() {
 		int scale = 2;// 设置位数
 		int roundingMode = 4;// 表示四舍五入，可以选择其他舍值方式，例如去尾，等等.
 		BigDecimal bd = new BigDecimal((double) bhPoints);
 		bd = bd.setScale(scale, roundingMode);
-		bhPoints = bd.floatValue();
+		bhPoints = bd.doubleValue();
 
 		return bhPoints;
 	}
 
-	public void setBhPoints(float bhPoints) {
+	public void setBhPoints(double bhPoints) {
 		this.bhPoints = bhPoints;
 	}
 
