@@ -95,7 +95,11 @@
                         var html = template('history-template', {'list': slist});
                         $('.op-list').append(html);
                         $('#current_page').val(++current_page);
-                        $('#fetchMoreMsg').html('加载更多');
+                        if (data.list.length < 10) {
+                        	$('#fetchMoreMsg').html('没有了');
+                        } else {
+                        	$('#fetchMoreMsg').html('加载更多');
+                        }
                     } else {
                         $('#fetchMoreMsg').html('没有了');
                     }
