@@ -31,7 +31,7 @@
             <b class="tp-btn btn-off"></b>
         </div>
         <div class="item">
-             <select id="address_province" class="new-select">
+             <select id="address_province" class="txt-select">
                  <option value="0">请选择省份</option>
                     <c:forEach items="${firstLocations}" var="firstLocation">
                         <option value="${firstLocation.locationId}" id="option${firstLocation.locationId}">${firstLocation.name}</option>
@@ -39,12 +39,12 @@
              </select>
         </div>
         <div class="item">
-            <select id="address_city">
+            <select id="address_city" class="txt-select">
                 <option value="0">请选择城市</option>
             </select>
         </div>
         <div class="item">
-            <select id="address_location">
+            <select id="address_location" class="txt-select">
                 <option value="0">请选择区县</option>
             </select>
         </div>
@@ -90,6 +90,8 @@
 
                 address_city.html("<option value='0'>请选择城市</option>");
                 address_location.html("<option value='0'>请选择区县</option>");
+
+                enableSubmit();
             });
             address_city.on("change", function() {
                 var cityId = $(this).val();
@@ -98,9 +100,12 @@
                 } else {
                     address_location.append(getChildren(cityId, 'address_location'));
                 }
+
+                enableSubmit();
             });
             address_location.on("change", function() {
                 locationId = $(this).val();
+
                 enableSubmit();
             });
 
