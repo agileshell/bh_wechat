@@ -30,6 +30,24 @@
             <input class="txt-input txt-password" type="password" autocomplete="off" placeholder="请输入密码" required="required">
             <b class="tp-btn btn-off"></b>
         </div>
+        <div class="item">
+             <select id="address_province" class="new-select">
+                 <option value="0">请选择省份</option>
+                    <c:forEach items="${firstLocations}" var="firstLocation">
+                        <option value="${firstLocation.locationId}" id="option${firstLocation.locationId}">${firstLocation.name}</option>
+                    </c:forEach>
+             </select>
+        </div>
+        <div class="item">
+            <select id="address_city">
+                <option value="0">请选择城市</option>
+            </select>
+        </div>
+        <div class="item">
+            <select id="address_location">
+                <option value="0">请选择区县</option>
+            </select>
+        </div>
         <div class="item item-captcha">
             <div class="input-info">
                 <input class="txt-input txt-captcha" type="tel" size="11" maxlength="4" autocomplete="off" placeholder="请输入验证码">
@@ -59,8 +77,33 @@
 <script>
     (function() {
         var _len_user = 0, _len_mobile = 0, _len_passwd = 0, _len_ckcode = 0;
+        var address_province = $("#address_province"), address_city = $("#address_city"), address_location = $("#address_location");
+        var locationId = 0;
         $(document).ready(function() {
             hasCookie();
+
+            address_province.on("change", function() {
+                var provinceId = $(this).val();
+                if (provinceId != 0) {
+                    address_city.append(getChildren(provinceId, 'address_city'));
+                }
+
+                address_city.html("<option value='0'>请选择城市</option>");
+                address_location.html("<option value='0'>请选择区县</option>");
+            });
+            address_city.on("change", function() {
+                var cityId = $(this).val();
+                if (cityId == 0) {
+                    address_location.html("<option value='0'>请选择区县</option>");
+                } else {
+                    address_location.append(getChildren(cityId, 'address_location'));
+                }
+            });
+            address_location.on("change", function() {
+                locationId = $(this).val();
+                enableSubmit();
+            });
+
             bindEvents();
         });
 
@@ -68,6 +111,21 @@
             if (!navigator.cookieEnabled) {
                 $('.item-tips').show().children('.err-msg').html('您的手机浏览器不支持或已经禁止使用cookie，无法正常登录，请开启或更换其他浏览器');
             }
+        }
+
+        var getChildren = function(parentId, elementId) {
+            var selector = $("#" + elementId);
+            selector.html("<option value='0'>请选择</option>");
+            $.ajax({
+                url : 'api/locations/' + parentId,
+                type : 'GET',
+                dataType : 'json',
+                success : function(data) {
+                    $.each(data, function(index, value) {
+                        selector.append("<option value='" + value.locationId + "' id='option" + value.locationId + "'>" + value.name + "</option>");
+                    });
+                }
+            });
         }
 
         function bindEvents() {
@@ -111,7 +169,7 @@
         }
 
         function enableSubmit() {
-            if (_len_user && _len_mobile && _len_passwd && _len_ckcode) {
+            if (_len_user && _len_mobile && _len_passwd && _len_ckcode && locationId) {
                 $('.btn-submit').removeClass('btn-disabled');
             } else {
                 $('.btn-submit').addClass('btn-disabled');
@@ -129,6 +187,7 @@
             params.mobile = $('.txt-mobile').val();
             params.password = $('.txt-password').val();
             params.captcha = $('.txt-captcha').val();
+            params.locationId = address_location.val();
             return params;
         }
 

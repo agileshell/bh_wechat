@@ -1,6 +1,8 @@
 package com.bh.wechat.controller;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,9 +23,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bh.wechat.constant.GlobalProperties;
 import com.bh.wechat.exception.BhException;
+import com.bh.wechat.request.LocationRequest;
 import com.bh.wechat.request.RegistryRequest;
 import com.bh.wechat.response.AccountResponse;
 import com.bh.wechat.response.BaseResponse;
+import com.bh.wechat.response.Location;
+import com.bh.wechat.response.LocationResponse;
 import com.bh.wechat.wx.model.AccessTokenOAuth;
 import com.bh.wechat.wx.service.WechatOAuthService;
 import com.google.code.kaptcha.Constants;
@@ -63,7 +69,7 @@ public class AccountController extends BaseController {
     @ResponseBody
     public AccountResponse login(@RequestParam(required = true) String userName,
             @RequestParam(required = true) String password, @RequestParam(required = true) String captcha)
-            throws BhException {
+                    throws BhException {
         AccountResponse accountResponse = new AccountResponse();
         if (StringUtils.isBlank(userName) || StringUtils.isBlank(password) || StringUtils.isBlank(captcha)) {
             accountResponse.setRet(1000);
@@ -90,7 +96,7 @@ public class AccountController extends BaseController {
     }
 
     @RequestMapping("/register")
-    public String registerView() throws BhException {
+    public String registerView(Model model) throws BhException {
         boolean isLogined = isLogin();
         if (!isLogined) {
             if (hasOpenid()) {
@@ -109,6 +115,8 @@ public class AccountController extends BaseController {
             if (StringUtils.isBlank(openid)) {
                 return getOauthUrl("register");
             } else {
+                model.addAttribute("firstLocations", getLocations(0));
+
                 return "account/register";
             }
         }
@@ -161,7 +169,7 @@ public class AccountController extends BaseController {
     @ResponseBody
     public BaseResponse changePassword(@RequestParam(required = true) String password,
             @RequestParam(required = true) String oldPassword, @RequestParam(required = true) String captcha)
-            throws BhException {
+                    throws BhException {
         BaseResponse response = new BaseResponse();
         if (StringUtils.isBlank(password) || StringUtils.isBlank(oldPassword) || StringUtils.isBlank(captcha)) {
             response.setRet(1000);
@@ -202,7 +210,7 @@ public class AccountController extends BaseController {
     @ResponseBody
     public BaseResponse changePayPassword(@RequestParam(required = true) String password,
             @RequestParam(required = true) String oldPassword, @RequestParam(required = true) String captcha)
-            throws BhException {
+                    throws BhException {
         BaseResponse response = new BaseResponse();
         if (StringUtils.isBlank(password) || StringUtils.isBlank(oldPassword) || StringUtils.isBlank(captcha)) {
             response.setRet(1000);
@@ -256,10 +264,9 @@ public class AccountController extends BaseController {
             return "redirect:/";
         } else {
 
-            return "redirect:"
-                    + WechatOAuthService.getOauthUrl(
-                            GlobalProperties.WX_DOAMIN.concat("/oauth/recommend/").concat(userId + ""), "UTF-8",
-                            "snsapi_userinfo");
+            return "redirect:" + WechatOAuthService.getOauthUrl(
+                    GlobalProperties.WX_DOAMIN.concat("/oauth/recommend/").concat(userId + ""), "UTF-8",
+                    "snsapi_userinfo");
         }
     }
 
@@ -278,4 +285,14 @@ public class AccountController extends BaseController {
         return "redirect:/";
     }
 
+    private List<Location> getLocations(int parentId) throws BhException {
+        LocationRequest request = new LocationRequest();
+        request.setParentId(parentId);
+        LocationResponse locationResponse = addressService.getLocations(request);
+        if (locationResponse.isSuccess()) {
+            return locationResponse.getList();
+        } else {
+            return new ArrayList<Location>();
+        }
+    }
 }

@@ -23,6 +23,9 @@ public class RegistryRequest implements Serializable {
     @Parameter
     private String openid;
 
+    @Parameter
+    private int locationId;
+
     public String getUserName() {
         return userName;
     }
@@ -53,6 +56,14 @@ public class RegistryRequest implements Serializable {
 
     public void setOpenid(String openid) {
         this.openid = openid;
+    }
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
     }
 
 }
