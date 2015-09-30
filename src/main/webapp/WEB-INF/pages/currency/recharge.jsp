@@ -47,7 +47,7 @@
 <%@ include file="../../layout/_header_menu.jsp"%>
 <!-- header end -->
 
-<form id="goRechargeForm" action="goRecharge" method="post">
+<form id="goRechargeForm" action="goRecharge" method="get">
     <div style="padding: 50px 10px 0 10px;">
         <section class="input-box">
             <span class="beforeInput">金额</span>

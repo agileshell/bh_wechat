@@ -202,7 +202,7 @@ public class CurrencyController extends BaseController {
         return "currency/recharge-fail";
     }
 
-    @RequestMapping(value = "/goRecharge", method = RequestMethod.POST)
+    @RequestMapping(value = "/goRecharge", method = RequestMethod.GET)
     public String paySign(RechargeBhPointsRequest requestData, HttpServletRequest httpServletRequest)
             throws BhException {
         boolean isLogined = isLogin();
