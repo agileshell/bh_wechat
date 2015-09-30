@@ -56,22 +56,22 @@
         <ul class="cate-menu tbl-type" id="categoryMenu">
             <li class="tbl-cell route1">
                 <a href="products" class="menu1">
-                    <span class="menu1-icon"><span></span></span> <span class="cate-name">新品</span>
+                    <span class="menu1-icon" style="background: #e85a5d; width: 42px; height: 42px;"><span></span></span> <span class="cate-name">新品</span>
                 </a>
             </li>
             <li class="tbl-cell route2">
                 <a href="myCart" class="menu2">
-                    <span class="menu2-icon"><span></span></span> <span class="cate-name">购物车</span>
+                    <span class="menu2-icon" style="background: #e85a5d; width: 42px; height: 42px;"><span></span></span> <span class="cate-name">购物车</span>
                 </a>
             </li>
             <li class="tbl-cell route3">
                 <a href="profile" class="menu3">
-                    <span class="menu3-icon"><span></span></span> <span class="cate-name">我的</span>
+                    <span class="menu3-icon" style="background: #e85a5d; width: 42px; height: 42px;"><span></span></span> <span class="cate-name">我的</span>
                 </a>
             </li>
             <li class="tbl-cell route4">
                 <a href="campaigns" class="menu4">
-                    <span class="menu4-icon"><span></span></span> <span class="cate-name">活动</span>
+                    <span class="menu4-icon" style="background: #e85a5d; width: 42px; height: 42px;"><span></span></span> <span class="cate-name">活动</span>
                 </a>
             </li>
         </ul>

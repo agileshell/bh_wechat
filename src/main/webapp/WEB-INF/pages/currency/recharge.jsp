@@ -66,7 +66,6 @@
         var amount = $("#amount").val();
         var reg = /^\d+(?=\.{0,1}\d+$|$)/
         if(reg.test(amount)) {
-        	$("#recharge").attr("disabled", "disabled");
             $("#goRechargeForm").submit();
         } else {
             $("#warn-input").text("金额格式错误，请重新输入");

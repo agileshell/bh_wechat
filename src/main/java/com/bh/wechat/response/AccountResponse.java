@@ -14,7 +14,7 @@ public class AccountResponse extends BaseResponse implements Serializable {
 
     private String userName;
 
-    private int bhPoints;
+    private float bhPoints;
 
     private int dzPoints;
 
@@ -52,11 +52,11 @@ public class AccountResponse extends BaseResponse implements Serializable {
         this.userName = userName;
     }
 
-    public int getBhPoints() {
+    public float getBhPoints() {
         return bhPoints;
     }
 
-    public void setBhPoints(int bhPoints) {
+    public void setBhPoints(float bhPoints) {
         this.bhPoints = bhPoints;
     }
 

@@ -210,7 +210,7 @@
         <section id="warn-input" class="warn-input"></section>
     </div>
     <div>
-        <span style="display:block;">
+        <span id="rechargespan"  style="display:block;">
             <a id="recharge" href="javascript:void(0);" class="btn btn-recharge" style="margin: 0 8% 0 8%;">下一步</a>
         </span>
     </div>
@@ -338,7 +338,7 @@
             return;
         }
 
-        $("#recharge").attr("disabled", "disabled");
+        $("#rechargespan").hide();
         bankFullName = $("#option" + bankNameProvince).text() + ' ' + $("#option" + bankNameCity).text() + ' ' + $("#option" + bankNameLocation).text() + ' ' + bankName + ' ' + subBankName;
         $.ajax({
             url : 'api/withdraw',
@@ -355,6 +355,7 @@
                 if (rdata.ret == 0) {
                     window.location.href = 'bhPoints/withdraw/history';
                 } else {
+                	$("#rechargespan").show();
                     switch (rdata.ret) {
                         case 1000:
                         case 3002:
@@ -369,7 +370,7 @@
             },
             error : function() {
                 alert("提现失败");
-                $("#recharge").removeAttr("disabled");
+                $("#rechargespan").show();
             }
         });
     });

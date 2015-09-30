@@ -64,10 +64,12 @@
                 <span>{{$value.amount}}</span>
                 {{if $value.status == 'success'}}
                     <span>成功</span>
-                {{elseif $value.status == 'fail'}}
-                    <span>失败</span>
                 {{else}}
-                    <span>处理中</span>
+                    {{if $value.status == 'fail'}}
+                    	<span>失败</span>
+                	{{else}}
+                    	<span>处理中</span>
+                	{{/if}}
                 {{/if}}
             </div>
         </li>
@@ -98,7 +100,11 @@
                         var html = template('history-template', data);
                         $('.op-list').append(html);
                         $('#current_page').val(++current_page);
-                        $('#fetchMoreMsg').html('加载更多');
+                        if (data.list.length < 10) {
+                        	$('#fetchMoreMsg').html('没有了');
+                        } else {
+                        	$('#fetchMoreMsg').html('加载更多');
+                        }
                     } else {
                         $('#fetchMoreMsg').html('没有了');
                     }
