@@ -1,79 +1,86 @@
 package com.bh.wechat.response;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class AccountResponse extends BaseResponse implements Serializable {
 
-    private static final long serialVersionUID = -785445734624099391L;
+	private static final long serialVersionUID = -785445734624099391L;
 
-    private String token;
+	private String token;
 
-    private String refreshToken;
+	private String refreshToken;
 
-    private int userId;
+	private int userId;
 
-    private String userName;
+	private String userName;
 
-    private float bhPoints;
+	private float bhPoints;
 
-    private int dzPoints;
+	private int dzPoints;
 
-    private int qianPoints;
+	private int qianPoints;
 
-    public String getToken() {
-        return token;
-    }
+	public String getToken() {
+		return token;
+	}
 
-    public void setToken(String token) {
-        this.token = token;
-    }
+	public void setToken(String token) {
+		this.token = token;
+	}
 
-    public String getRefreshToken() {
-        return refreshToken;
-    }
+	public String getRefreshToken() {
+		return refreshToken;
+	}
 
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-    }
+	public void setRefreshToken(String refreshToken) {
+		this.refreshToken = refreshToken;
+	}
 
-    public int getUserId() {
-        return userId;
-    }
+	public int getUserId() {
+		return userId;
+	}
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public String getUserName() {
+		return userName;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public float getBhPoints() {
-        return bhPoints;
-    }
+	public float getBhPoints() {
+		int scale = 2;// 设置位数
+		int roundingMode = 4;// 表示四舍五入，可以选择其他舍值方式，例如去尾，等等.
+		BigDecimal bd = new BigDecimal((double) bhPoints);
+		bd = bd.setScale(scale, roundingMode);
+		bhPoints = bd.floatValue();
 
-    public void setBhPoints(float bhPoints) {
-        this.bhPoints = bhPoints;
-    }
+		return bhPoints;
+	}
 
-    public int getDzPoints() {
-        return dzPoints;
-    }
+	public void setBhPoints(float bhPoints) {
+		this.bhPoints = bhPoints;
+	}
 
-    public void setDzPoints(int dzPoints) {
-        this.dzPoints = dzPoints;
-    }
+	public int getDzPoints() {
+		return dzPoints;
+	}
 
-    public int getQianPoints() {
-        return qianPoints;
-    }
+	public void setDzPoints(int dzPoints) {
+		this.dzPoints = dzPoints;
+	}
 
-    public void setQianPoints(int qianPoints) {
-        this.qianPoints = qianPoints;
-    }
+	public int getQianPoints() {
+		return qianPoints;
+	}
+
+	public void setQianPoints(int qianPoints) {
+		this.qianPoints = qianPoints;
+	}
 
 }
