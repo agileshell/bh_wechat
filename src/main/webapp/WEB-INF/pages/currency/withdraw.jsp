@@ -202,7 +202,7 @@
         	<span class="new-tbl-type new-mg-b10">
         		<span class="new-tbl-cell new-txt-w38">支付密码</span>
         		<span class="new-input-span">
-        			<input type="text" name="payPassword" id="payPassword" class="new-input" autocomplete="off" placeholder="请输入唯宝汇支付密码">
+        			<input type="password" name="payPassword" id="payPassword" class="new-input" autocomplete="off" placeholder="请输入唯宝汇支付密码">
         		</span>
         	</span>
         	<span class="info-input">支付密码默认为您的登录密码,您可以在个人中心进行修改</span>
@@ -338,6 +338,7 @@
             return;
         }
 
+        $("#recharge").attr("disabled", "disabled");
         bankFullName = $("#option" + bankNameProvince).text() + ' ' + $("#option" + bankNameCity).text() + ' ' + $("#option" + bankNameLocation).text() + ' ' + bankName + ' ' + subBankName;
         $.ajax({
             url : 'api/withdraw',
@@ -368,6 +369,7 @@
             },
             error : function() {
                 alert("提现失败");
+                $("#recharge").removeAttr("disabled");
             }
         });
     });

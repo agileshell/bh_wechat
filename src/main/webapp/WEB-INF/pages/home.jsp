@@ -8,6 +8,14 @@
     <script type="text/javascript" src="resources/js/banner.js?v=${version}"></script>
 
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<style>
+    	a, a:link, a:visited, a:hover, a:active {
+			text-decoration: none;
+		}
+		.tbl-cell {
+			background: white;
+		}
+    </style>
 </head>
 
 <script type="text/javascript">
