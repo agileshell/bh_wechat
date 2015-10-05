@@ -62,14 +62,12 @@
     .info-input {
       line-height: 15px;
       font-size: 12px;
-      padding-left: 60px;
       color: #bdbdbd;
     }
     .warn-input {
-      height: 2.1rem;
-      line-height: 1.9rem;
-      font-size: .6rem;
-      text-indent: .938rem;
+      height: 15px;
+      line-height: 15px;
+      font-size: 12px;
       color: #e85156;
     }
     </style>
@@ -206,13 +204,15 @@
         			<input type="password" name="payPassword" id="payPassword" class="new-input" autocomplete="off" placeholder="请输入唯宝汇支付密码">
         		</span>
         	</span>
-        	<span class="info-input">1、每次提现最小金额为100元；</span>
-        	<br/>
-        	<span class="info-input">2、提现收取1%的手续费，对于手续费不满两元的按照最低手续费两元收取；</span>
-        	<br/>
-        	<span class="info-input">3、支付密码默认为您的登录密码,您可以在个人中心进行修改。</span>
         </div>
         <section id="warn-input" class="warn-input"></section>
+        <div>
+        <span class="info-input">1、每次提现最小金额为100元；</span>
+            <br/>
+            <span class="info-input">2、提现收取1%的手续费，对于手续费不满两元的按照最低手续费两元收取；</span>
+            <br/>
+            <span class="info-input">3、支付密码默认为您的登录密码,您可以在个人中心进行修改。</span>
+        </div>
     </div>
     <div>
         <span id="rechargespan"  style="display:block;">

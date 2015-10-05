@@ -74,7 +74,7 @@
                 _old_pwd = this.value;
                 if (_len_new_pwd > 0) {
                     if (_new_pwd == _old_pwd) {
-                        $('.item-tips').show().children('.err-msg').html("新密码不能等于原始密码");
+                        $('.item-tips').show().children('.err-msg').html("新密码不能和原始密码相同");
                         _newPwd_noteq_oldPwd = false;
                     }
                 }
