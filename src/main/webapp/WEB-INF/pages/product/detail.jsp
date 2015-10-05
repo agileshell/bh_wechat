@@ -201,7 +201,7 @@
 	});
 
 	var Q = function() {
-		var inventory = $('#inventory').val(), qty = $("#number").val();
+		var inventory = parseInt($('#inventory').val()), qty = parseInt($("#number").val());
 		if(inventory == 0 || inventory < qty) {
 			alert("库存不足");
 			return;
@@ -220,7 +220,7 @@
 	};
 
 	var M = function() {
-		var inventory = $('#inventory').val(), qty = $("#number").val();
+		var inventory =  parseInt($('#inventory').val()), qty =  parseInt($("#number").val());
 		if(inventory == 0 || inventory < qty) {
 			alert("库存不足");
 			return;
@@ -238,7 +238,7 @@
 	$("#directorder").click(M);
 	var addWare = function(productId, qty, guige, isDirectOrder) {
 		if (isDirectOrder) {
-			if ($("#inventory").val() < qty) {
+			if (parseInt($("#inventory").val()) < qty) {
 				alert("库存不足");
 			} else {
 				window.location.href = "checkoutDirectly?productId=" + productId + "&qty=" + qty + "&guige=" + guige;
