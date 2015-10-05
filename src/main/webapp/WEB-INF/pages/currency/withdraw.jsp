@@ -88,7 +88,7 @@
 	         <span class="new-tbl-type new-mg-b10">
 	             <span class="new-tbl-cell new-txt-w38">省份</span>
 	             <span class="new-tbl-cell">
-	                 <span class="new-input-span new-mg-b10">
+	                 <span class="new-input-span">
 	                     <span class="new-box new-p-re">
 	                         <div id="province_text">请选择开户行所在省</div>
 	                         <span></span> 
@@ -107,7 +107,7 @@
 	         <span class="new-tbl-type new-mg-b10">
 	             <span class="new-tbl-cell new-txt-w38">城市</span>
 	             <span class="new-tbl-cell">
-	                 <span class="new-input-span new-mg-b10">
+	                 <span class="new-input-span">
 	                     <span class="new-box new-p-re">
 	                         <div id="city_text">请选择开户行所在城市</div>
 	                         <span></span> 
@@ -123,7 +123,7 @@
             <span class="new-tbl-type new-mg-b10">
                 <span class="new-tbl-cell new-txt-w38">区县</span>
                 <span class="new-tbl-cell">
-                    <span class="new-input-span new-mg-b10">
+                    <span class="new-input-span">
                         <span class="new-box new-p-re">
                             <div id="location_text">请选择开户行所在区县</div>
                             <span></span> 
@@ -137,9 +137,9 @@
         </div>
         <div class="new-mg-t10">
             <span class="new-tbl-type new-mg-b10">
-                <span class="new-tbl-cell new-txt-w38">开户支行</span>
+                <span class="new-tbl-cell new-txt-w38">开户银行</span>
                 <span class="new-tbl-cell">
-                    <span class="new-input-span new-mg-b10">
+                    <span class="new-input-span">
                         <span class="new-box new-p-re">
                             <div id="bank_text">请选择开户银行</div>
                             <span></span> 
@@ -164,12 +164,13 @@
                     </span>
                 </span>
             </span>
+            <span class="info-input">优先处理农业银行</span>
         </div>
         <div class="new-mg-t10">
         	<span class="new-tbl-type new-mg-b10">
         		<span class="new-tbl-cell new-txt-w38">开户支行</span>
         		<span class="new-input-span">
-        			<input type="text"  id="sub_bank_name" class="new-input" autocomplete="off" placeholder="请输入开户支行">
+        			<input type="text" id="sub_bank_name" class="new-input" autocomplete="off" placeholder="请输入开户支行">
         		</span>
         	</span>
         </div>
@@ -205,7 +206,11 @@
         			<input type="password" name="payPassword" id="payPassword" class="new-input" autocomplete="off" placeholder="请输入唯宝汇支付密码">
         		</span>
         	</span>
-        	<span class="info-input">支付密码默认为您的登录密码,您可以在个人中心进行修改</span>
+        	<span class="info-input">1、每次提现最小金额为100元；</span>
+        	<br/>
+        	<span class="info-input">2、提现收取1%的手续费，对于手续费不满两元的按照最低手续费两元收取；</span>
+        	<br/>
+        	<span class="info-input">3、支付密码默认为您的登录密码,您可以在个人中心进行修改。</span>
         </div>
         <section id="warn-input" class="warn-input"></section>
     </div>
@@ -330,6 +335,10 @@
             $("#warn-input").text("金额格式错误，请重新输入");
             return;
         }
+        if(amount < 100) {
+            alert("提现金额不能少于100元");
+            return;
+        }
 
         var payPassword = $("#payPassword").val();
         if(payPassword.length <= 0) {
@@ -355,7 +364,7 @@
                 if (rdata.ret == 0) {
                     window.location.href = 'bhPoints/withdraw/history';
                 } else {
-                	$("#rechargespan").show();
+                    $("#rechargespan").show();
                     switch (rdata.ret) {
                         case 1000:
                         case 3002:

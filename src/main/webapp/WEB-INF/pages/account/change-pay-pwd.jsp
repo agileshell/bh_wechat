@@ -50,7 +50,7 @@
 
 <script>
     (function() {
-        var _len_old_pwd = 0, _len_new_pwd = 0, _len_confirm_pwd = 0, _len_ckcode = 0, _newPwd_eq_confirmPwd = false, _new_pwd = '', _confirm_pwd = '';
+        var _len_old_pwd = 0, _len_new_pwd = 0, _len_confirm_pwd = 0, _len_ckcode = 0, _newPwd_eq_confirmPwd = false, _newPwd_noteq_oldPwd = true, _old_pwd = '', _new_pwd = '', _confirm_pwd = '';
         $(document).ready(function() {
             bindEvents();
         });
@@ -71,6 +71,13 @@
             _len_old_pwd = $('#oldPassword').on('input', function() {
                 $(this).removeClass('txt-err');
                 _len_old_pwd = this.value.length;
+                _old_pwd = this.value;
+                if (_len_new_pwd > 0) {
+                    if (_new_pwd == _old_pwd) {
+                        $('.item-tips').show().children('.err-msg').html("新密码不能等于原始密码");
+                        _newPwd_noteq_oldPwd = false;
+                    }
+                }
                 enableSubmit();
             }).val().length;
             _len_new_pwd = $('#password').on('input', function() {
@@ -84,6 +91,12 @@
                     } else {
                         $('.item-tips').show().children('.err-msg').html("新密码和确认密码不一致");
                         _newPwd_eq_confirmPwd = false;
+                    }
+                }
+                if (_len_old_pwd > 0) {
+                    if (_new_pwd == _old_pwd) {
+                        $('.item-tips').show().children('.err-msg').html("新密码不能等于原始密码");
+                        _newPwd_noteq_oldPwd = false;
                     }
                 }
                 enableSubmit();
@@ -114,7 +127,7 @@
         }
 
         function enableSubmit() {
-            if (_len_old_pwd && _len_new_pwd && _len_confirm_pwd && _len_ckcode && _newPwd_eq_confirmPwd) {
+            if (_len_old_pwd && _len_new_pwd && _len_confirm_pwd && _len_ckcode && _newPwd_eq_confirmPwd && _newPwd_noteq_oldPwd) {
                 $('.btn-submit').removeClass('btn-disabled');
             } else {
                 $('.btn-submit').addClass('btn-disabled');

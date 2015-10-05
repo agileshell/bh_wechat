@@ -75,10 +75,22 @@
             <p class="detail-title">
                 <c:choose>
                     <c:when test="${product.discountPrice != 0}">
-                        可使用宝豆抵消<font color="red">&yen;<fmt:formatNumber value="${product.discountPrice * product.baodouPercent}" pattern="#0.00"/></font>元
+                        可使用宝豆
+                        <font color="red">
+                            <fmt:formatNumber value="${product.discountPrice * product.baodouPercent * 100}" pattern="#0"/>
+                        </font>个，抵扣
+                        <font color="red">&yen;
+                            <fmt:formatNumber value="${product.discountPrice * product.baodouPercent}" pattern="#0.00"/>
+                        </font>元
                     </c:when>
                     <c:otherwise>
-                        可使用宝豆抵消<font color="red">&yen;<fmt:formatNumber value="${product.price * product.baodouPercent}" pattern="#0.00"/></font>元
+                        可使用宝豆
+                        <font color="red">
+                            <fmt:formatNumber value="${product.price * product.baodouPercent * 100}" pattern="#0"/>
+                        </font>个，抵扣
+                        <font color="red">&yen;
+                            <fmt:formatNumber value="${product.price * product.baodouPercent}" pattern="#0.00"/>
+                        </font>元
                     </c:otherwise>
                 </c:choose>
             </p>

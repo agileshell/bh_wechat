@@ -64,7 +64,10 @@
                                 </div>
                             </c:if>
                             <div class="cart-product-name2">
-                                可使用宝豆抵消
+                                可使用宝豆
+                                <font color="red">
+                                    <fmt:formatNumber value="${cartProduct.discountPrice > 0 ? cartProduct.discountPrice * cartProduct.baodouPercent * 100 : cartProduct.price * cartProduct.baodouPercent * 100}" pattern="#0"/>
+                                </font>个，抵扣
                                 <font color="red">&yen;
                                     <fmt:formatNumber value="${cartProduct.discountPrice > 0 ? cartProduct.discountPrice * cartProduct.baodouPercent :cartProduct.price * cartProduct.baodouPercent}" pattern="#0.00"/>
                                 </font>元
