@@ -10,7 +10,7 @@
 
 <!-- header start -->
 <c:set var="header_name" value="购物车" />
-<c:set var="current_menu" value="my-account" />
+<c:set var="current_menu" value="cart" />
 <%@ include file="../../layout/_header_menu.jsp"%>
 <!-- header end -->
 

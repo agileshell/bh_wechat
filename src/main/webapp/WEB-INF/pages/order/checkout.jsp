@@ -10,6 +10,21 @@
 <script type="text/javascript">
     $('body').css('background', '#f0f2f5');
 </script>
+<style>
+.txt-input {
+    width: 80px;
+    height: 30px;
+    line-height: normal;
+    padding: 5px;
+    border: 1px solid #d7d7d7;
+    border-radius: 3px;
+    background: #fff;
+    font-family: '\5fae\8f6f\96c5\9ed1';
+    font-size: 16px;
+    color: #252525;
+    -webkit-appearance: none;
+}
+</style>
 
 <!-- header start -->
 <c:set var="header_name" value="填写订单" />
@@ -91,7 +106,8 @@
             <div class="s-item">
                 <div class="sitem-m">
                     宝豆：<span>共${sessionScope.totalBaodou}宝豆，本单可使用${sessionScope.canUseBaodou}宝豆</span>
-                    <input type="hidden" id="baodou" name="baodou" value="0">
+                    <br/>
+                    <span id="useBaodou">使用 <input type="text" id="baodou" name="baodou" value="0" class="txt-input"> 个宝豆</span>
                 </div>
             </div>
         </div>
@@ -181,27 +197,36 @@
             payMoney.text(needPay);
             $("#pay-a").text(0);
         } else if (id == 2) {
+            $("#pay-a").text(needPay);
+            payMoney.text(0);
             $("#pay-b").text(0);
-            var totalBhPoints = parseInt($("#totalBhPoints").val());
-            if (needPay < totalBhPoints) {
-                payMoney.text(0);
-                $("#pay-a").text(needPay);
-            } else {
-                payMoney.val(payMoney - totalBhPoints);
-                $("#pay-a").text(totalBhPoints);
-            }
         } else {
             $("#pay-a").text(0);
-            var totalQianPoints = parseInt($("#totalQianPoints").val());
-            if (needPay < totalQianPoints) {
-                payMoney.text(0);
-                $("#pay-b").text(needPay);
-            } else {
-                payMoney.val(payMoney - totalQianPoints);
-                $("#pay-b").text(totalQianPoints);
-            }
+            payMoney.text(0);
+            $("#pay-b").text(needPay);
         }
     }
+
+    $("#baodou").on("blur", function() {
+        var baodou = parseInt($("#baodou").val());
+        var totalBaodou = parseInt($("#totalBaodou").val());
+        if (totalBaodou <= baodou) {
+            baodou = totalBaodou;
+            $("#baodou").val(totalBaodou);
+            $("#pay-c").text(totalBaodou);
+        } else {
+            $("#pay-c").text(baodou);
+        }
+
+        var needPay = parseFloat($("#totalPrice").val()) - baodou / 100, needPay = needPay.toFixed(2);
+        if ($("#paymentMethod").val() == 1) {
+            $("#pay-a").text(0);
+            $("#payMoney").text(needPay);
+        } else if ($("#paymentMethod").val() == 2) {
+            $("#pay-a").text(needPay);
+            $("#payMoney").text(0);
+        }
+    });
 
     $("#payPassword").on("input", function() {
         if (this.value.length > 0) {
