@@ -59,9 +59,9 @@
         <div class="step2 border-1px">
             <div class="m bdb-1px">
                 <div class="mb">
-                    <a href="javascript:;" id="paymentMethod1" class="btn3" onclick="javascript:choosePayType('1');">网银在线</a>
-                    <a href="javascript:;" id="paymentMethod2" class="btn3 btn3-ch" onclick="javascript:choosePayType('2');">宝汇币</a>
-                    <input type="hidden" id="paymentMethod" name="paymentMethod" value="2">
+                    <a href="javascript:;" id="paymentMethod1" class="btn3 btn3-ch" onclick="javascript:choosePayType('1');">网银在线</a>
+                    <a href="javascript:;" id="paymentMethod2" class="btn3" onclick="javascript:choosePayType('2');">宝汇币</a>
+                    <input type="hidden" id="paymentMethod" name="paymentMethod" value="1">
                 </div>
             </div>
         </div>
@@ -98,15 +98,11 @@
         <div class="step5 border-1px">
             <div class="s-item">
                 <div class="sitem-l">商品金额</div>
-                <div class="sitem-r">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00#"/>元</div>
+                <div class="sitem-r">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00"/>元</div>
             </div>
             <div class="s-item">
                 <div class="sitem-l">宝汇币</div>
                 <div id="pay-a" class="sitem-r">0</div>
-            </div>
-            <div class="s-item">
-                <div class="sitem-l">乾币</div>
-                <div id="pay-b" class="sitem-r">0</div>
             </div>
             <div class="s-item">
                 <div class="sitem-l">宝豆</div>
@@ -117,7 +113,7 @@
 
     <div class="pay-bar" id="pay-bar">
         <div class="payb-con">
-            实付款：<span id="payMoney">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00#"/>元</span>
+            实付款：<span id="payMoney">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00"/>元</span>
         </div>
         <a class="payb-btn" onclick="javascript:submitOrder();" href="javascript:void(0);"> 提交订单 </a>
     </div>
@@ -183,6 +179,7 @@
         var payMoney = $("#payMoney");
         if (id == 1) {
             payMoney.text(needPay);
+            $("#pay-a").text(0);
         } else if (id == 2) {
             $("#pay-b").text(0);
             var totalBhPoints = parseInt($("#totalBhPoints").val());

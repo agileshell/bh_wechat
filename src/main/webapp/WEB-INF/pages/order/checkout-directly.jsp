@@ -104,15 +104,11 @@
         <div class="step5 border-1px" style="margin-bottom: 3.125em;">
             <div class="s-item">
                 <div class="sitem-l">商品金额</div>
-                <div class="sitem-r">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00#"/></div>
+                <div class="sitem-r">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00"/></div>
             </div>
             <div class="s-item">
                 <div class="sitem-l">宝汇币</div>
                 <div id="pay-a" class="sitem-r">0</div>
-            </div>
-            <div class="s-item">
-                <div class="sitem-l">乾币</div>
-                <div id="pay-b" class="sitem-r">0</div>
             </div>
             <div class="s-item">
                 <div class="sitem-l">宝豆</div>
@@ -123,7 +119,7 @@
 
     <div class="pay-bar" id="pay-bar">
         <div class="payb-con">
-            实付款：￥<span id="payMoney"><fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00#"/></span>
+            实付款：￥<span id="payMoney"><fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00"/></span>
         </div>
         <a class="payb-btn" onclick="javascript:submitOrder();" href="javascript:void(0);"> 提交订单 </a>
     </div>
@@ -188,6 +184,7 @@
         var payMoney = $("#payMoney");
         if (id == 1) {
             payMoney.text(needPay);
+            $("#pay-a").text(0);
         } else if (id == 2) {
             $("#pay-b").text(0);
             var totalBhPoints = parseInt($("#totalBhPoints").val());

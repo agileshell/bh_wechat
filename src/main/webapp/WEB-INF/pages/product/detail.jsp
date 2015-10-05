@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../config.jsp"%>
 <head>
     <title>${product.name}</title>
@@ -74,10 +75,10 @@
             <p class="detail-title">
                 <c:choose>
                     <c:when test="${product.discountPrice != 0}">
-                        可使用宝豆抵消<font color="red">&yen;${product.discountPrice * product.baodouPercent}</font>元
+                        可使用宝豆抵消<font color="red">&yen;<fmt:formatNumber value="${product.discountPrice * product.baodouPercent}" pattern="#0.00"/></font>元
                     </c:when>
                     <c:otherwise>
-                        可使用宝豆抵消<font color="red">&yen;${product.price * product.baodouPercent}</font>元
+                        可使用宝豆抵消<font color="red">&yen;<fmt:formatNumber value="${product.price * product.baodouPercent}" pattern="#0.00"/></font>元
                     </c:otherwise>
                 </c:choose>
             </p>

@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../config.jsp"%>
 <head>
     <title>购物车</title>
@@ -63,7 +64,10 @@
                                 </div>
                             </c:if>
                             <div class="cart-product-name2">
-                                可使用宝豆抵消<font color="red">&yen;${cartProduct.discountPrice > 0 ? cartProduct.discountPrice * cartProduct.baodouPercent :cartProduct.price * cartProduct.baodouPercent}</font>元
+                                可使用宝豆抵消
+                                <font color="red">&yen;
+                                    <fmt:formatNumber value="${cartProduct.discountPrice > 0 ? cartProduct.discountPrice * cartProduct.baodouPercent :cartProduct.price * cartProduct.baodouPercent}" pattern="#0.00"/>
+                                </font>元
                             </div>
                             <div class="cart-product-name2">
                                 库存：<font color="red">${cartProduct.inventory}</font>
