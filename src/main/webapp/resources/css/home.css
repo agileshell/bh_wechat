@@ -201,7 +201,7 @@
 	-ms-transform: rotateY(0deg);
 	transform: rotateY(0deg)
 }
-
+/*
 .menu1-icon, .menu2-icon, .menu3-icon, .menu4-icon {
 	display: inline-block;
 	width: 2.64em;
@@ -235,12 +235,49 @@
 	height: 2em;
 	margin-top: .5em
 }
-
 .menu1.on .menu1-icon, .menu2.on .menu2-icon, .menu3.on .menu3-icon,
 	.menu4.on .menu4-icon {
 	background: #b30008
 }
-
+*/ 
+.menu1-icon, .menu2-icon, .menu3-icon, .menu4-icon {
+    display: inline-block;
+    width: 2.64em;
+    height: 2.64em;
+    line-height: 3em;
+    /* background: #e85a5d; */
+    border-radius: 2.64em;
+    text-align: center;
+    vertical-align: middle
+}
+.menu1-icon span {
+	display: inline-block;
+    width: 2.64em;
+    height: 2.64em;
+    background: url(../img/menu1.png) no-repeat;
+    background-size: 2.64em 2.64em
+}
+.menu2-icon span {
+    display: inline-block;
+    width: 2.64em;
+    height: 2.64em;
+    background: url(../img/menu2.png) no-repeat;
+    background-size: 2.64em 2.64em
+}
+.menu3-icon span {
+    display: inline-block;
+    width: 2.64em;
+    height: 2.64em;
+    background: url(../img/menu3.png) no-repeat;
+    background-size: 2.64em 2.64em
+}
+.menu4-icon span {
+    display: inline-block;
+    width: 2.64em;
+    height: 2.64em;
+    background: url(../img/menu4.png) no-repeat;
+    background-size: 2.64em 2.64em
+}
 .ad {
 	margin-top: .71em;
 	border-top: 1px solid #e5e5e5;
