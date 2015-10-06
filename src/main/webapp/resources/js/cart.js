@@ -1,4 +1,4 @@
-var cartPriceEl = $("#cart_price"), cartPointEl = $("#cart_point"), checkedNumEl = $("#checked_num");
+var cartPriceEl = $("#cart_price"), cartPointEl = $("#cart_point"), checkedNumEl = $("#checked_num"), shipFeeEl = $("#ship_fee");
 var selectedCartProduct = [], cartCount = $("#cartCount").val(), cartPrice = 0.0, cartPoint = 0, checkedNum = 0;
 
 function reduceWare(id) {
@@ -15,7 +15,7 @@ function reduceWare(id) {
 
         updateCartProductQty(id, a);
 
-            modifyDisplayData(id, -1);
+        modifyDisplayData(id, -1);
 
         $('#' + id).addClass("displayed");
         $('#cart-checkbox-' + id).addClass("displayed");
@@ -92,6 +92,13 @@ function modifyDisplayData(id, qty) {
                 * qty;
         checkedNum = parseInt(checkedNum) + qty;
 
+        if (cartPrice >= 299) {
+        	shipFeeEl.html('(免运费)');
+        } else {
+        	cartPrice += 15.00;
+        	shipFeeEl.html('(含运费15元)');
+        }
+
         cartPriceEl.html(cartPrice.toFixed(2));
         cartPointEl.html(cartPoint);
         checkedNumEl.html(checkedNum);
@@ -102,6 +109,13 @@ function modifyDisplayData2(id, qty) {
     cartPrice = parseFloat(cartPrice) + parseFloat($("#price" + id).val()) * qty;
     cartPoint = parseInt(cartPoint) + parseInt($("#point" + id).val()) * qty;
     checkedNum = parseInt(checkedNum) + qty;
+
+    if (cartPrice >= 299) {
+    	shipFeeEl.html('(免运费)');
+    } else {
+    	cartPrice += 15.00;
+    	shipFeeEl.html('(含运费15元)');
+    }
 
     cartPriceEl.html(cartPrice.toFixed(2));
     cartPointEl.html(cartPoint);

@@ -203,7 +203,14 @@ public class OrderController extends BaseController {
             ProductDetailResponse product = productService.getProductDetail(productId);
             session.setAttribute("product", product);
             float price = product.getDiscountPrice() > 0 ? product.getDiscountPrice() : product.getPrice();
-            session.setAttribute("totalPrice", qty * price);
+            float totalPrice = qty * price;
+            if (totalPrice < 299) {
+                totalPrice += 15.00;
+                session.setAttribute("shipFee", 15.00);
+            } else {
+                session.setAttribute("shipFee", 0);
+            }
+            session.setAttribute("totalPrice", totalPrice);
             session.setAttribute("canUseBaodou", (int) (price * product.getBaodouPercent() * 100));
 
             AccountResponse profile = getProfile();
@@ -250,6 +257,13 @@ public class OrderController extends BaseController {
                 cartProductIds.delete(cartProductIds.length() - 1, cartProductIds.length());
             }
             session.setAttribute("canUseBaodou", canUseBaodou);
+
+            if (totalPrice < 299) {
+                totalPrice += 15.00;
+                session.setAttribute("shipFee", 15.00);
+            } else {
+                session.setAttribute("shipFee", 0);
+            }
             session.setAttribute("totalPrice", totalPrice);
             session.setAttribute("cartProductIds", cartProductIds.toString());
 

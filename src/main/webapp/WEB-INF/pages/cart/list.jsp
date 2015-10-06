@@ -26,7 +26,7 @@
 
 <input type="hidden" id="cartCount" value="${fn:length(cartProducts)}">
 
-<div id="notEmptyCart" style="display: block; margin-bottom: 60px;">
+<div id="notEmptyCart" style="display: block; margin-bottom: 90px;">
     <div class="shop-group">
         <ul class="shp-cart-list">
           <c:forEach items="${cartProducts}" var="cartProduct">
@@ -92,14 +92,14 @@
         </ul>
     </div>
 </div>
-
+<div style="display: block; position: fixed; bottom: 57px; width:100%; height: 20px; font-size: 12px; background: #efefef;">订单金额满299元免运费（15元）</div>
 <div id="payment_p" style="display: block">
     <div class="payment-total-bar payment-total-bar-new" id="payment">
         <div class="shp-chk shp-chk-new">
             <span onclick="checkAllHandler();" class="cart-checkbox" id="checkAll"></span> <span class="cart-checkbox-text">全选</span>
         </div>
         <div class="shp-cart-info shp-cart-info-new">
-            <strong class="shp-cart-total">合计：&yen;<span class="bottom-bar-price" id="cart_price" style="font-size: 13.8181818181818px;">0.0</span></strong>
+            <strong class="shp-cart-total">合计：&yen;<span class="bottom-bar-price" id="cart_price">0.0</span><span id="ship_fee"></span></strong>
             <span class="bottom-total-price" style="font-size: 10px;">奖励积分：<span id="cart_point" style="font-size: 10px;">0</span></span>
         </div>
         <a class="btn-right-block btn-right-block-new" href="javascript:checkout();">去结算(<span id="checked_num">0</span>)
