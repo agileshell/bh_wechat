@@ -93,20 +93,20 @@
         </c:choose>
         <div class="tbl-cell">
             <div class="ad-left">
-                <a href="products?keyword=凤舞九天" class="ad-border"> 
-                    <img src="resources/img/home/fengwujiut.jpg" height="70" alt="凤舞九天">
+                <a href="javascript:void(0)" class="ad-border"> 
+                    <img src="resources/img/home/1.jpg" height="70" alt="翡翠专场">
                 </a> 
-                <a href="products?keyword=璀璨人生" class="ad-border">
-                    <img src="resources/img/home/cuicanrensheng.jpg" height="70" alt="璀璨人生">
+                <a href="javascript:void(0)" class="ad-border">
+                    <img src="resources/img/home/2.jpg" height="70" alt="NINORIVA">
                 </a> 
-                <a href="products?keyword=荣耀之光" class="ad-border">
-                    <img src="resources/img/home/rongyaozhiguang.jpg" height="70" alt="荣耀之光">
+                <a href="javascript:void(0)" class="ad-border">
+                    <img src="resources/img/home/3.jpg" height="70" alt="飾琴书画">
                 </a>
-                <a href="products?keyword=海洋之恋" class="ad-border">
-                    <img src="resources/img/home/haiyangzhixing.jpg" height="70" alt="海洋之恋">
+                <a href="javascript:void(0)" class="ad-border">
+                    <img src="resources/img/home/4.jpg" height="70" alt="崔德毅书法">
                 </a>
-                <a href="products?keyword=龙凤呈祥" class="ad-border">
-                    <img src="resources/img/home/longfengcehngxiang.jpg" height="70" alt="龙凤呈祥">
+                <a href="javascript:void(0)" class="ad-border">
+                    <img src="resources/img/home/5.jpg" height="70" alt="诺利康泰">
                 </a>
             </div>
         </div>
