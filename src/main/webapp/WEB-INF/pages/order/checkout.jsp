@@ -110,6 +110,9 @@
                     <br/>
                     使用 <input type="text" id="baodou" name="baodou" value="0" class="txt-input"> 个宝豆
                     </c:if>
+                    <c:if test="${sessionScope.canUseBaodou <= 0}">
+                    <input type="hidden" id="baodou" name="baodou" value="0">
+                    </c:if>
                 </div>
             </div>
         </div>

@@ -113,7 +113,14 @@
                 <div class="sitem-m">
                     宝豆：<span>共${sessionScope.totalBaodou}宝豆，本单可使用${sessionScope.canUseBaodou}宝豆</span>
                     <br/>
+                    <c:if test="${sessionScope.canUseBaodou > 0}">
+                    <br/>
                     使用 <input type="text" id="baodou" name="baodou" value="0" class="txt-input"> 个宝豆
+                    </c:if>
+                    <c:if test="${sessionScope.canUseBaodou <= 0}">
+                    <input type="hidden" id="baodou" name="baodou" value="0">
+                    </c:if>
+                    
                 </div>
             </div>
         </div>
