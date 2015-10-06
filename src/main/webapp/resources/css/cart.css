@@ -320,12 +320,12 @@
 }
 
 .shp-cart-info-new {
-	margin-left: 11px;
+	margin-left: 5px;
 }
 
 .shp-cart-info-new .shp-cart-total, .shp-cart-total span {
 	color: #fff !important;
-	font-size: 13px;
+	font-size: 12px;
 	margin-top: 7px !important;
 }
 
@@ -350,7 +350,7 @@
 }
 
 .btn-right-block-new {
-	width: 100px !important;
+	width: 80px !important;
 	line-height: 60px !important;
 	background-color: #f15353 !important;
 	font-size: 18px !important;

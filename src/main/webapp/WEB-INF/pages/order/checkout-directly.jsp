@@ -120,7 +120,7 @@
         <div class="step5 border-1px" style="margin-bottom: 5em;">
             <div class="s-item">
                 <div class="sitem-l">商品金额</div>
-                <div class="sitem-r">￥<fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00"/></div>
+                <div class="sitem-r">￥<fmt:formatNumber value="${sessionScope.productTotalPrice}" pattern="#0.00"/></div>
             </div>
             <div class="s-item">
                 <div class="sitem-l">运费</div>
@@ -137,7 +137,6 @@
         </div>
     </div>
 
-    <div style="display: block; position: fixed; bottom: 4.125em; width:100%; height: 20px; font-size: 12px; background: #efefef;">订单金额满299元免运费（15元）</div>
     <div class="pay-bar" id="pay-bar">
         <div class="payb-con">
             实付款：￥<span id="payMoney"><fmt:formatNumber value="${sessionScope.totalPrice}" pattern="#0.00"/></span>

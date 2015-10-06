@@ -1,5 +1,6 @@
 var cartPriceEl = $("#cart_price"), cartPointEl = $("#cart_point"), checkedNumEl = $("#checked_num"), shipFeeEl = $("#ship_fee");
 var selectedCartProduct = [], cartCount = $("#cartCount").val(), cartPrice = 0.0, cartPoint = 0, checkedNum = 0;
+var realShipFee = 0;
 
 function reduceWare(id) {
     var idEl = $("#qty" + id);
@@ -92,11 +93,24 @@ function modifyDisplayData(id, qty) {
                 * qty;
         checkedNum = parseInt(checkedNum) + qty;
 
-        if (cartPrice >= 299) {
-        	shipFeeEl.html('(免运费)');
-        } else {
-        	cartPrice += 15.00;
-        	shipFeeEl.html('(含运费15元)');
+        if (cartPrice >= 299 && realShipFee > 0) {
+        	cartPrice -= 15.00;
+        	realShipFee = 0;
+        	shipFeeEl.html('');
+        } else if (cartPrice == 0) {
+        	realShipFee = 0;
+        	shipFeeEl.html('');
+        }
+
+        if(realShipFee <= 0) {
+            if (cartPrice >= 299) {
+            	shipFeeEl.html('(免运费)');
+            	realShipFee = 0;
+            } else if (cartPrice > 0) {
+            	cartPrice += 15.00;
+            	shipFeeEl.html('(含运费15元)');
+            	realShipFee = 15.00;
+            }
         }
 
         cartPriceEl.html(cartPrice.toFixed(2));
@@ -110,11 +124,24 @@ function modifyDisplayData2(id, qty) {
     cartPoint = parseInt(cartPoint) + parseInt($("#point" + id).val()) * qty;
     checkedNum = parseInt(checkedNum) + qty;
 
-    if (cartPrice >= 299) {
-    	shipFeeEl.html('(免运费)');
-    } else {
-    	cartPrice += 15.00;
-    	shipFeeEl.html('(含运费15元)');
+    if (cartPrice >= 299 && realShipFee > 0) {
+    	cartPrice -= 15.00;
+    	realShipFee = 0;
+    	shipFeeEl.html('');
+    } else if (cartPrice == 0) {
+    	realShipFee = 0;
+    	shipFeeEl.html('');
+    }
+
+    if(realShipFee <= 0) {
+        if (cartPrice >= 299) {
+        	shipFeeEl.html('(免运费)');
+        	realShipFee = 0;
+        } else if (cartPrice > 0) {
+        	cartPrice += 15.00;
+        	shipFeeEl.html('(含运费15元)');
+        	realShipFee = 15.00;
+        }
     }
 
     cartPriceEl.html(cartPrice.toFixed(2));
@@ -148,6 +175,7 @@ function changeSelected(id) {
 function checkAllHandler() {
      var flag = $("#checkAll").hasClass("checked");
     if (flag) {
+    	realShipFee = 0;
         $(".cart-checkbox").removeClass("checked");
         selectedCartProduct = [];
 

@@ -92,11 +92,11 @@
         </ul>
     </div>
 </div>
-<div style="display: block; position: fixed; bottom: 57px; width:100%; height: 20px; font-size: 12px; background: #efefef;">订单金额满299元免运费（15元）</div>
+<div style="display: block; position: fixed; bottom: 57px; width:100%; height: 20px; font-size: 12px; background: #efefef;">订单金额满299元免运费</div>
 <div id="payment_p" style="display: block">
     <div class="payment-total-bar payment-total-bar-new" id="payment">
         <div class="shp-chk shp-chk-new">
-            <span onclick="checkAllHandler();" class="cart-checkbox" id="checkAll"></span> <span class="cart-checkbox-text">全选</span>
+            <span onclick="checkAllHandler();" class="cart-checkbox" id="checkAll"></span><span class="cart-checkbox-text">全选</span>
         </div>
         <div class="shp-cart-info shp-cart-info-new">
             <strong class="shp-cart-total">合计：&yen;<span class="bottom-bar-price" id="cart_price">0.0</span><span id="ship_fee"></span></strong>

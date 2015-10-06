@@ -204,6 +204,7 @@ public class OrderController extends BaseController {
             session.setAttribute("product", product);
             float price = product.getDiscountPrice() > 0 ? product.getDiscountPrice() : product.getPrice();
             float totalPrice = qty * price;
+            session.setAttribute("productTotalPrice", totalPrice);
             if (totalPrice < 299) {
                 totalPrice += 15.00;
                 session.setAttribute("shipFee", 15.00);
@@ -258,6 +259,7 @@ public class OrderController extends BaseController {
             }
             session.setAttribute("canUseBaodou", canUseBaodou);
 
+            session.setAttribute("productTotalPrice", totalPrice);
             if (totalPrice < 299) {
                 totalPrice += 15.00;
                 session.setAttribute("shipFee", 15.00);
