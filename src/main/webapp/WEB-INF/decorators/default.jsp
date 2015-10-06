@@ -6,7 +6,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <c:url value="<%=basePath%>" var="basePath" />
-<c:set var="version" value="1.2.0" />
+<c:set var="version" value="1.2.2" />
 
 <!DOCTYPE html>
 <!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
