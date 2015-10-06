@@ -93,19 +93,19 @@
         </c:choose>
         <div class="tbl-cell">
             <div class="ad-left">
-                <a href="javascript:alert('唯宝汇品牌商家即将开放，敬请期待')" class="ad-border">
+                <a href="products?keyword=翡翠" class="ad-border">
                     <img src="resources/img/home/1.jpg" height="70" alt="翡翠专场">
                 </a> 
-                <a href="javascript:alert('唯宝汇品牌商家即将开放，敬请期待')" class="ad-border">
-                    <img src="resources/img/home/2.jpg" height="70" alt="NINORIVA">
+                <a href="products?keyword=尼诺里拉" class="ad-border">
+                    <img src="resources/img/home/2.jpg" height="70" alt="尼诺里拉">
                 </a> 
-                <a href="javascript:alert('唯宝汇品牌商家即将开放，敬请期待')" class="ad-border">
+                <a href="products?keyword=饰琴画衣" class="ad-border">
                     <img src="resources/img/home/3.jpg" height="70" alt="飾琴书画">
                 </a>
-                <a href="javascript:alert('唯宝汇品牌商家即将开放，敬请期待')" class="ad-border">
+                <a href="products?keyword=崔德毅" class="ad-border">
                     <img src="resources/img/home/4.jpg" height="70" alt="崔德毅书法">
                 </a>
-                <a href="javascript:alert('唯宝汇品牌商家即将开放，敬请期待')" class="ad-border">
+                <a href="products?keyword=诺丽" class="ad-border">
                     <img src="resources/img/home/5.jpg" height="70" alt="诺利康泰">
                 </a>
             </div>
