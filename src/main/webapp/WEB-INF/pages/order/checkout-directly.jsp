@@ -225,6 +225,13 @@
 
     $("#baodou").on("blur", function() {
         var baodou = parseInt($("#baodou").val());
+        if (isNaN(a)) {
+            a = 0;
+            $("#baodou").val(0);
+        } else if (a < 0) {
+            a = 0
+            $("#baodou").val(0);
+        }
         var totalBaodou = parseInt($("#totalBaodou").val());
         if (totalBaodou <= baodou) {
             baodou = totalBaodou;
