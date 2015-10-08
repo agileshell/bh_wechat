@@ -43,6 +43,7 @@
     <input type="hidden" id="addressId" value="${sessionScope.addressId}"/>
     <input type="hidden" id="inventory" value="${sessionScope.product.inventory}"/>
 
+    <input type="hidden" id="canUseBaodou" value="${sessionScope.canUseBaodou}"/>
     <input type="hidden" id="totalPrice" value="${sessionScope.totalPrice}"/>
     <input type="hidden" id="totalBhPoints" value="${sessionScope.totalBhPoints}"/>
     <input type="hidden" id="totalQianPoints" value="${sessionScope.totalQianPoints}"/>
@@ -232,13 +233,26 @@
         }
         $("#baodou").val(baodou);
 
+        var canUseBaodou = parseInt($("#canUseBaodou").val());
         var totalBaodou = parseInt($("#totalBaodou").val());
-        if (totalBaodou <= baodou) {
-            baodou = totalBaodou;
-            $("#baodou").val(totalBaodou);
-            $("#pay-c").text(totalBaodou);
+        if (canUseBaodou > baodou) {
+            if (totalBaodou <= baodou) {
+                baodou = totalBaodou;
+                $("#baodou").val(baodou);
+                $("#pay-c").text(baodou);
+            } else {
+                $("#pay-c").text(baodou);
+            }
         } else {
-            $("#pay-c").text(baodou);
+            if (totalBaodou > canUseBaodou) {
+                baodou = canUseBaodou;
+                $("#baodou").val(baodou);
+                $("#pay-c").text(baodou);
+            } else {
+                 baodou = totalBaodou;
+                 $("#baodou").val(baodou);
+                 $("#pay-c").text(baodou);
+            }
         }
 
         var needPay = parseFloat($("#totalPrice").val()) - baodou / 100, needPay = needPay.toFixed(2);
