@@ -251,7 +251,7 @@ public class OrderController extends BaseController {
             if (cartProducts != null && cartProducts.size() > 0) {
                 for (CartProductModel cartProduct : cartProducts) {
                     float price = cartProduct.getPrice() * cartProduct.getQty();
-                    canUseBaodou = (int) (price * cartProduct.getBaodouPercent() * 100);
+                    canUseBaodou += (int) (price * cartProduct.getBaodouPercent() * 100);
                     totalPrice += price;
                     cartProductIds.append(cartProduct.getCartProductId()).append(",");
                 }
